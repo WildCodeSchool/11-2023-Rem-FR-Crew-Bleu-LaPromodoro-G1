@@ -1,0 +1,9 @@
+.inventaire-image {
+    cursor: pointer;
+    width: 5rem;
+    height: auto;
+}
+
+.menu-inventaire {
+    position: absolute; 
+}
