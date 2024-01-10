@@ -1,28 +1,51 @@
 .inventaire-image {
-    cursor: pointer;
-    width: 5rem;
-    height: auto;
+  cursor: pointer;
+  width: 5rem;
+  height: auto;
 }
 
-.inventaire-container{
-    display: flex;
-    align-items: start;
-    justify-content: flex-start;
+.inventaire-container {
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selected-item {
-    max-width: 80%; 
-    max-height: 80%;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.item-button {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); /* X-offset, Y-offset, blur radius, color */
+  border: none; /* Optionnel : supprime la bordure par défaut des boutons */
+  cursor: pointer; /* Change le curseur pour indiquer qu'il s'agit d'un élément cliquable */
+  background-color: black;
+  padding: 10px 20px; /* Espacement interne du bouton */
+  border-radius: 5px; /* Arrondit les coins du bouton */
+  transition: box-shadow 0.3s; /* Effet de transition pour l'ombre */
+}
+
+.item-button:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.35); /* Ombre plus grande au survol */
+}
+.inventaire-button {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); /* X-offset, Y-offset, blur radius, color */
+  border: none; /* Optionnel : supprime la bordure par défaut des boutons */
+  cursor: pointer; /* Change le curseur pour indiquer qu'il s'agit d'un élément cliquable */
+  background-color: black;
+  padding: 10px 20px; /* Espacement interne du bouton */
+  border-radius: 5px; /* Arrondit les coins du bouton */
+  transition: box-shadow 0.3s; /* Effet de transition pour l'ombre */
 }
