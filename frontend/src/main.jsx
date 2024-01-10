@@ -10,6 +10,38 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
+  {
+    path: "/menu-principal",
+    // element: </>
+  },
+  {
+    path: "/niveau1",
+    // element: </>
+  },
+  {
+    path: "/niveau2",
+    // element: </>
+  },
+  {
+    path: "/niveau3",
+    // element: </>
+  },
+  {
+    path: "/niveau4",
+    // element: </>
+  },
+  {
+    path: "/niveau5",
+    // element: </>
+  },
+  {
+    path: "/cimetiere",
+    // element: </>
+  },
+  {
+    path: "/asile",
+    // element: </>
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
