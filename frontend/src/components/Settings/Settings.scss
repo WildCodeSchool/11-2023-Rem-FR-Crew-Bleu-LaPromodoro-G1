@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#parametres {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: #313131;
+  border-radius: 5rem;
+
+  width: calc(69px / 2);
+  padding: 9px;
+
+  img {
+    width: 100%;
+  }
+
+  #param {
+    cursor: pointer;
+
+    display: flex;
+  }
+
+  #para-open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    margin: 9px auto;
+
+    input {
+      transform: rotate(-90deg);
+
+      width: 200%;
+      margin: 18px 0;
+    }
+
+    #mute,
+    #subtitles {
+      cursor: pointer;
+    }
+
+    #mute {
+      height: 35px;
+      width: 35px;
+    }
+  }
+}

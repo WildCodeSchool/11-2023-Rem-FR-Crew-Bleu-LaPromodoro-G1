@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import Settings from "./components/Settings/Settings";
 
 import "./App.scss";
 
 function App() {
-  return <Outlet />;
+  return <Settings />;
 }
 
 export default App;
