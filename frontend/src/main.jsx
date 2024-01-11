@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/niveau1",
-    element: <Niveau1/>
+    element: <Niveau1 />,
   },
   {
     path: "/niveau2",
