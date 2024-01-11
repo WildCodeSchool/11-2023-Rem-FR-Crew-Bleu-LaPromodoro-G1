@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
+import Niveau1 from "./pages/Niveau1/components/Niveau1";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/niveau1",
-    // element: </>
+    element: <Niveau1 />,
   },
   {
     path: "/niveau2",

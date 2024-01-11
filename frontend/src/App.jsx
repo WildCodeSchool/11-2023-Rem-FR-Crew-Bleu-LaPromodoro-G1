@@ -1,9 +1,9 @@
-import Settings from "./components/Settings/Settings";
+import Accueil from "./pages/MenuPrincipal/component/Accueil";
 
 import "./App.scss";
 
 function App() {
-  return <Settings />;
+  return <Accueil />;
 }
 
 export default App;
