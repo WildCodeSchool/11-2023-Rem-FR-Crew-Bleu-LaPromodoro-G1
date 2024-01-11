@@ -1,4 +1,5 @@
 import "../styles/Accueil.scss";
+import { Link } from "react-router-dom";
 
 function Accueil() {
   return (
@@ -38,7 +39,9 @@ function Accueil() {
           </p>
         </div>
         <div id="launcher">
-          <button type="button">Nouvelle partie</button>
+          <Link to="/niveau1">
+            <button type="button">Nouvelle partie</button>
+          </Link>
           <button type="button">Continuer</button>
         </div>
       </section>
