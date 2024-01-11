@@ -109,6 +109,7 @@
     }
 
     button {
+      animation: opacityAnimationButton 2s infinite;
       cursor: pointer;
 
       background-color: var(--bg-button);
@@ -119,8 +120,8 @@
 
       border-radius: 12px;
       padding: 5px 20px;
-      animation: opacityAnimationButton 2s infinite;
     }
+
     button:hover {
       background-color: var(--font-color-text);
       color: var(--bg-button);
