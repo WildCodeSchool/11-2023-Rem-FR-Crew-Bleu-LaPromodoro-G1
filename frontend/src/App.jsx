@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import Accueil from "./pages/MenuPrincipal/component/Accueil";
 
 import "./App.scss";
 
 function App() {
-  return <Outlet />;
+  return <Accueil />;
 }
 
 export default App;
