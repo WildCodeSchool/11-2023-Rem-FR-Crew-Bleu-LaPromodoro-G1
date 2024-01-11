@@ -1,56 +1,24 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+:root {
+  --bg-accueil: #908972;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+  --bg-button: #803d2a;
+  --border-button: solid 3px #fbf4ec;
+  --shadow-button: 0 0 10px #fbf4ec;
+  --font-size-button: 1rem;
 
-.App {
-  text-align: center;
-}
+  --font-color-maintitle: #ffffff;
+  --font-color-title: #ffffff;
+  --font-color-text: #ffffff;
+  --font-666-color: #e1525f;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  --font-size-maintitle: 4rem;
+  --font-size-title: 2rem;
+  --font-size-text: 1rem;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+  // $font-style-text: A définir;
+  // $font-style-subtitle: A définir;
+  // $font-style-title: A définir;
+  // $font-style-maintitle: CasinoShadow;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
+  // $font-border-subtitle: A définir;
 }
