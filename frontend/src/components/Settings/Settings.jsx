@@ -47,7 +47,7 @@ function Settings() {
                 ? "src/components/Settings/assets/sous-titres.png"
                 : "src/components/Settings/assets/sous-titres-off.png"
             }
-            alt="avtiver / desactiver les sous-titres"
+            alt="activer / desactiver les sous-titres"
           />
         </div>
       )}
