@@ -11,7 +11,7 @@
   --font-color-text: #ffffff;
   --font-666-color: #e1525f;
 
-  --font-size-maintitle: 4rem;
+  --font-size-maintitle: 7rem;
   --font-size-title: 2rem;
   --font-size-text: 1rem;
 
@@ -21,4 +21,13 @@
   // $font-style-maintitle: CasinoShadow;
 
   // $font-border-subtitle: A définir;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
