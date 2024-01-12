@@ -1,13 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./App.scss";
-import BulleNaration from "./pages/BulleNaration/component/BulleNaration";
+import Accueil from "./pages/MenuPrincipal/component/Accueil";
 
 function App() {
   return (
     <>
       <Outlet />
-      <BulleNaration />
+      <Accueil />
     </>
   );
 }
