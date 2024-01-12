@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Inventaire from "../../../components/Inventaire";
 import AjoutIndice from "./AjoutIndice";
+import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau1.css";
 import BulleNaration from "../../BulleNaration/component/BulleNaration";
 
@@ -36,6 +37,7 @@ function Niveau1() {
         />
       ))}
       <Inventaire items={inventaire} />
+      <Settings />
     </div>
   );
 }
