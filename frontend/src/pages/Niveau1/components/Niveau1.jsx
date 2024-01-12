@@ -3,6 +3,7 @@ import Inventaire from "../../../components/Inventaire";
 import AjoutIndice from "./AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau1.css";
+import BulleNaration from "../../BulleNaration/component/BulleNaration";
 
 function Niveau1() {
   const [inventaire, setInventaire] = useState([]);
@@ -27,6 +28,7 @@ function Niveau1() {
 
   return (
     <div className="background">
+      <BulleNaration />
       {indicesAffiches.map((indice) => (
         <AjoutIndice
           key={indice.id}

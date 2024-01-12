@@ -1,9 +1,15 @@
+import React from "react";
+import { Outlet } from "react-router-dom";
+import "./App.scss";
 import Accueil from "./pages/MenuPrincipal/component/Accueil";
 
-import "./App.scss";
-
 function App() {
-  return <Accueil />;
+  return (
+    <>
+      <Outlet />
+      <Accueil />
+    </>
+  );
 }
 
 export default App;
