@@ -39,8 +39,13 @@ function Accueil() {
           </p>
         </div>
         <div id="launcher">
-          <Link to="/niveau1">Nouvelle partie</Link>
-          <Link to="/">Continuer</Link>
+          <Link to="/niveau1">
+            <button type="button">Nouvelle partie</button>
+          </Link>
+          <Link to="/">
+            {" "}
+            <button type="button">Continuer</button>
+          </Link>
         </div>
       </section>
     </section>
