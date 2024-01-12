@@ -12,6 +12,7 @@ function Niveau1() {
       image: "src/pages/Niveau1/assets/Tableau.png",
       x: 175,
       y: 250,
+      splineUrl: "https://prod.spline.design/be8BmFnRYQfM04Ba/scene.splinecode",
     },
   ]);
 

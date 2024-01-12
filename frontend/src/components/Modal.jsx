@@ -3,37 +3,21 @@ import "../styles/Modal.scss";
 import Spline from '@splinetool/react-spline';
 import Remove from '../assets/remove.png';
 
-export default function Modal() {
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
+export default function Modal({ splineUrl, onClose}) {
+  const handleContentClick = (element) => {
+    element.stopPropagation();
   };
 
-  if(modal) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
-
   return (
-    <>
-      <button onClick={toggleModal} className="btn-modal">
-        OPEN
-      </button>
-
-      {modal && (
-        <div className="modal">
-          <div className="overlay">
-          <img src={Remove} alt="close" className="close-modal" onClick={toggleModal}/>
-            <div className="modal-content">
-            <div className="modele3D">
-              <Spline scene="https://prod.spline.design/be8BmFnRYQfM04Ba/scene.splinecode" />
+    <div className="modal">
+      <div className="overlay" onClick={onClose}>
+        <img src={Remove} alt="close" className="close-modal" onClick={onClose}/>
+        <div className="modal-content" onClick={handleContentClick}>
+          <div className="modele3D">
+            <Spline scene={splineUrl} />
             </div>
-          </div>
-          </div>
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 }
