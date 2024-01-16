@@ -1,0 +1,20 @@
+.subtitlesContainer {
+  position: fixed;
+  bottom: 5%;
+  height: 10svh;
+  p {
+    display: flex !important;
+    justify-content: center !important;
+    width: 90svw !important;
+    margin: 0 5svw;
+    color: white;
+    font-weight: bold;
+    font-size: var(--font-size-title);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    text-shadow:
+      1px 1px 2px rgb(49, 48, 48),
+      0 0 1em rgb(52, 52, 53),
+      0 0 0.2em rgb(38, 38, 40);
+  }
+}
