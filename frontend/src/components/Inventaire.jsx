@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import valiseFermerImage from "../assets/ValiseFermer.png";
 import valiseOuverteImage from "../assets/ValiseOuverte.png";
 import "../styles/Inventaire.css";
+import Modal from "./Modal";
 
 function Inventaire({ items }) {
   const [visible, setVisible] = useState(false);
@@ -66,22 +68,9 @@ function Inventaire({ items }) {
           ))}
         </div>
       )}
+
       {selectedItem && (
-        <div
-          className="overlay"
-          onClick={() => setSelectedItem(null)}
-          onKeyDown={(event) =>
-            handleKeyDown(event, () => setSelectedItem(null))
-          }
-          role="button"
-          tabIndex={0}
-        >
-          <img
-            src={selectedItem.image}
-            alt={selectedItem.nom}
-            className="selected-item"
-          />
-        </div>
+        <Modal splineUrl={selectedItem.splineUrl} onClose={() => setSelectedItem(null)}/>
       )}
     </div>
   );
