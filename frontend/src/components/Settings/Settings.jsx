@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Settings.scss";
+import SousTitres from "../SousTitres";
 
 function Settings() {
   const [active, setActive] = useState(false);
@@ -49,6 +50,7 @@ function Settings() {
             }
             alt="activer / desactiver les sous-titres"
           />
+          {subtitles && <SousTitres />}
         </div>
       )}
     </div>

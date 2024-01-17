@@ -2,10 +2,11 @@
   position: fixed;
   bottom: 5%;
   height: 10svh;
+  display: flex !important;
+  justify-content: center !important;
+  width: 100svw !important;
+  left: 0px;
   p {
-    display: flex !important;
-    justify-content: center !important;
-    width: 90svw !important;
     margin: 0 5svw;
     color: white;
     font-weight: bold;
