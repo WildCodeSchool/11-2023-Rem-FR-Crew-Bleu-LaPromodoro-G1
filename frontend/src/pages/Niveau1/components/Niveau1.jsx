@@ -1,28 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Inventaire from "../../../components/Inventaire";
 import AjoutIndice from "./AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
-import "../styles/Niveau1.css";
+import "../styles/Niveau1.scss";
 import BulleNaration from "../../BulleNaration/component/BulleNaration";
 
 function Niveau1() {
   const [inventaire, setInventaire] = useState([]);
-  const [indicesAffiches, setIndicesAffiches] = useState([
-    {
-      id: 1,
-      nom: "Indice1",
-      image: "src/pages/Niveau1/assets/Tableau.png",
-      x: 175,
-      y: 250,
-    },
-  ]);
+  const [indicesAffiches, setIndicesAffiches] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/scene1")
+      .then((response) => response.json())
+      .then((data) => {
+        setIndicesAffiches(data);
+      })
+      .catch((error) =>
+        console.error("Erreur lors du chargement des données:", error)
+      );
+  }, []);
 
   const ajouterAuInventaire = (indice) => {
-    if (!inventaire.find((item) => item.id === indice.id)) {
-      setInventaire([...inventaire, indice]);
+    if (indice.inventory) {
+      if (!inventaire.find((item) => item.id === indice.id)) {
+        setInventaire([...inventaire, indice]);
+      }
       setIndicesAffiches(
         indicesAffiches.filter((item) => item.id !== indice.id)
       );
+    }
+  };
+  const ouvrirSplineUrl = (item) => {
+    if (item.splineUrl) {
+      window.open(item.splineUrl, "_blank");
     }
   };
 
@@ -33,10 +43,10 @@ function Niveau1() {
         <AjoutIndice
           key={indice.id}
           indice={indice}
-          onAjouter={ajouterAuInventaire}
+          onAjouter={() => ajouterAuInventaire(indice)}
         />
       ))}
-      <Inventaire items={inventaire} />
+      <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
       <Settings />
     </div>
   );

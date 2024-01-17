@@ -2,18 +2,23 @@ import React from "react";
 import PropTypes from "prop-types"; // Importer PropTypes
 
 function AjoutIndice({ indice, onAjouter }) {
+  const handleImageError = () => {
+    console.error(`Erreur de chargement de l'image : ${indice.picture}`);
+  };
+
   return (
     <img
-      src={indice.image}
+      src={`http://localhost:5000${indice.picture}`}
       alt={indice.nom}
       style={{
         position: "absolute",
-        left: `${indice.x}px`, // Utiliser template literals
-        top: `${indice.y}px`, // Utiliser template literals
-        width: "50px",
+        left: `${indice.x}px`,
+        top: `${indice.y}px`,
+        width: `${indice.largeur}px`,
         height: "auto",
       }}
       onClick={() => onAjouter(indice)}
+      onError={handleImageError}
     />
   );
 }
@@ -21,10 +26,11 @@ function AjoutIndice({ indice, onAjouter }) {
 // Ajouter la validation des props
 AjoutIndice.propTypes = {
   indice: PropTypes.shape({
-    image: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
     nom: PropTypes.string.isRequired,
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
+    largeur: PropTypes.number.isRequired,
   }).isRequired,
   onAjouter: PropTypes.func.isRequired,
 };

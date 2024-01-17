@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import valiseFermerImage from "../assets/ValiseFermer.png";
 import valiseOuverteImage from "../assets/ValiseOuverte.png";
-import "../styles/Inventaire.css";
+import "../styles/Inventaire.scss";
 
 function Inventaire({ items }) {
   const [visible, setVisible] = useState(false);
@@ -58,7 +58,7 @@ function Inventaire({ items }) {
               className="item-button"
             >
               <img
-                src={item.image}
+                src={`http://localhost:5000${item.picture}`}
                 alt={item.nom}
                 style={{ width: "50px", height: "auto" }}
               />
@@ -77,8 +77,8 @@ function Inventaire({ items }) {
           tabIndex={0}
         >
           <img
-            src={selectedItem.image}
-            alt={selectedItem.nom}
+            src={`http://localhost:5000${selectedItem.picture}`}
+            alt={selectedItem.name}
             className="selected-item"
           />
         </div>
