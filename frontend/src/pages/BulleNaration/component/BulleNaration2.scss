@@ -1,8 +1,8 @@
-.modal-div {
+.modal {
   background-image: url(../assets/SalleNiveau1.png);
 }
 
-.modal-div::before {
+.modal::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -19,7 +19,7 @@
   font-size: 18px;
 }
 
-.modal-div,
+.modal,
 .overlay {
   width: 100vw;
   height: 100vh;
@@ -87,7 +87,7 @@
   white-space: nowrap; /* Empêchez le texte de passer à la ligne */
   overflow: hidden; /* Cachez tout le texte en dehors de la largeur définie */
   animation: writeText 5s ease-out forwards; /* Ajoutez l'animation */
-  animation-delay: 1s;
+  // animation-delay: 1s;
 }
 .text3 {
   font-size: 2em;
@@ -95,7 +95,7 @@
   white-space: nowrap; /* Empêchez le texte de passer à la ligne */
   overflow: hidden; /* Cachez tout le texte en dehors de la largeur définie */
   animation: writeText 5s ease-out forwards; /* Ajoutez l'animation */
-  animation-delay: 1s;
+  // animation-delay: 1s;
 }
 .text4 {
   font-size: 2em;
@@ -103,7 +103,7 @@
   white-space: nowrap; /* Empêchez le texte de passer à la ligne */
   overflow: hidden; /* Cachez tout le texte en dehors de la largeur définie */
   animation: writeText 5s ease-out forwards; /* Ajoutez l'animation */
-  animation-delay: 1s;
+  // animation-delay: 1s;
 }
 .text5 {
   font-size: 2em;
@@ -111,7 +111,7 @@
   white-space: nowrap; /* Empêchez le texte de passer à la ligne */
   overflow: hidden; /* Cachez tout le texte en dehors de la largeur définie */
   animation: writeText 5s ease-out forwards; /* Ajoutez l'animation */
-  animation-delay: 1s;
+  // animation-delay: 1s;
 }
 .text6 {
   font-size: 2em;
@@ -119,5 +119,5 @@
   white-space: nowrap; /* Empêchez le texte de passer à la ligne */
   overflow: hidden; /* Cachez tout le texte en dehors de la largeur définie */
   animation: writeText 5s ease-out forwards; /* Ajoutez l'animation */
-  animation-delay: 1s;
+  // animation-delay: 1s;
 }

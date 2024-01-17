@@ -31,7 +31,7 @@ function BulleNaration() {
   return (
     <div>
       {modal && (
-        <div className="modal-div">
+        <div className="modal">
           <div className="overlay">
             <div className="modal-content">
               <h2>GERARD HADD :</h2>
@@ -43,33 +43,18 @@ function BulleNaration() {
               />
               {currentText === 1 && (
                 <p className={`text${currentText}`}>
-                  "Aie.. Ma tête… Mais.. ?! Où je suis là ?"
+                  “:rire: Ahahahahahahahaha !”
                 </p>
               )}
               {currentText === 2 && (
-                <p className={`text${currentText}`}>
-                  "Je ne me rappelle de rien."
-                </p>
+                <p className={`text${currentText}`}>“Je vais devenir fou !”</p>
               )}
               {currentText === 3 && (
-                <p className={`text${currentText}`}>
-                  "Pourquoi je suis dans un casino ?"
-                </p>
+                <p className={`text${currentText}`}>“ :pleure:”</p>
               )}
               {currentText === 4 && (
                 <p className={`text${currentText}`}>
-                  "La salle me semble étrange, je n'y vois qu'une seule porte."
-                </p>
-              )}
-              {currentText === 5 && (
-                <p className={`text${currentText}`}>
-                  "Hmm, elle semble verrouillée... Je vais devoir trouver un
-                  moyen de sortir de cette salle."
-                </p>
-              )}
-              {currentText === 6 && (
-                <p className={`text${currentText}`}>
-                  "Dans quelle galère je me suis fourré..."
+                  “ :chuchotement: j’ai peur…”
                 </p>
               )}
             </div>
