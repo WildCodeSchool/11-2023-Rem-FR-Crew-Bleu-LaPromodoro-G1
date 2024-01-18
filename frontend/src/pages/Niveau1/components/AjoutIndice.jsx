@@ -8,12 +8,13 @@ function AjoutIndice({ indice, onAjouter }) {
 
   return (
     <img
+      className="ajout"
       src={`http://localhost:5000${indice.picture}`}
-      alt={indice.nom}
+      alt={indice.name}
       style={{
         position: "absolute",
-        left: `${indice.x}px`,
-        top: `${indice.y}px`,
+        left: `${indice.x}%`,
+        top: `${indice.y}%`,
         width: `${indice.largeur}px`,
         height: "auto",
       }}
@@ -27,7 +28,7 @@ function AjoutIndice({ indice, onAjouter }) {
 AjoutIndice.propTypes = {
   indice: PropTypes.shape({
     picture: PropTypes.string.isRequired,
-    nom: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
     largeur: PropTypes.number.isRequired,

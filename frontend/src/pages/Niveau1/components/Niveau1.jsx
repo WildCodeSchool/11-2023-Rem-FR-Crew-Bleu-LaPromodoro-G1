@@ -6,10 +6,13 @@ import "../styles/Niveau1.scss";
 import BulleNaration from "../../BulleNaration/component/BulleNaration";
 import HelpBtn from "../../../components/Help/HelpBtn";
 // import SousTitres from "../../../components/SousTitres";
+import SousTitres from "../../../components/SousTitres";
 
 function Niveau1() {
   const [inventaire, setInventaire] = useState([]);
   const [indicesAffiches, setIndicesAffiches] = useState([]);
+  const [subtitles, setSubtitles] = useState("");
+  const [sousTitre, setSousTitre] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:5000/scene1")
@@ -31,6 +34,10 @@ function Niveau1() {
         indicesAffiches.filter((item) => item.id !== indice.id)
       );
     }
+    setSubtitles(indice.subtitles);
+    setTimeout(() => {
+      setSubtitles("");
+    }, 5000);
   };
   const ouvrirSplineUrl = (item) => {
     if (item.splineUrl) {
@@ -39,23 +46,19 @@ function Niveau1() {
   };
 
   return (
-    <div className="background">
+    <div className="background-container">
       <BulleNaration />
-      {/* <SousTitres /> */}
-      <div className="nav">
-        {indicesAffiches.map((indice) => (
-          <AjoutIndice
-            key={indice.id}
-            indice={indice}
-            onAjouter={() => ajouterAuInventaire(indice)}
-          />
-        ))}
-        <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
-        <div className="buttons">
-          <HelpBtn />
-          <Settings />
-        </div>
-      </div>
+      {indicesAffiches.map((indice) => (
+        <AjoutIndice
+          key={indice.id}
+          indice={indice}
+          onAjouter={() => ajouterAuInventaire(indice)}
+        />
+      ))}
+      <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
+      <HelpBtn />
+      {sousTitre && <SousTitres subtitles={subtitles} />}
+      <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
     </div>
   );
 }

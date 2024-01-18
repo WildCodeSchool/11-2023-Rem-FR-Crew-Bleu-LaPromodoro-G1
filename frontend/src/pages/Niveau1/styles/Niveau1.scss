@@ -1,7 +1,5 @@
-.background {
+.background-container {
   background-image: url("../assets/SalleNiveau1.png");
-  width: 100vw;
-  height: 100vh;
   position: relative;
 
   .nav {
@@ -18,4 +16,8 @@
       padding: 1rem;
     }
   }
+  width: calc(1.75 * 100vh);
+  height: 100vh;
+  background-size: cover;
+  margin: auto;
 }
