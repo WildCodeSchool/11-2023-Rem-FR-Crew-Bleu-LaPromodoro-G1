@@ -1,6 +1,11 @@
-.background {
+.background-container {
   background-image: url("../assets/SalleNiveau1.png");
-  width: 100vw;
-  height: 100vh;
   position: relative;
+  min-width: 1792px;
+  min-height: 1024px;
+  max-width: 1792px;
+  max-height: 1024px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }

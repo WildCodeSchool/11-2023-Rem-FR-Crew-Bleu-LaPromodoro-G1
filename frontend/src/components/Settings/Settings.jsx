@@ -4,7 +4,7 @@ import SousTitres from "../SousTitres";
 
 function Settings() {
   const [active, setActive] = useState(false);
-  const [subtitles, setSubtitles] = useState(true);
+  const [subtitles, setSubtitles] = useState(false);
   const [muted, setMuted] = useState(false);
   const toggleActive = () => (active ? setActive(false) : setActive(true));
   const toggleSubtitles = () =>
@@ -44,7 +44,7 @@ function Settings() {
             onClick={toggleSubtitles}
             id="subtitles"
             src={
-              !subtitles
+              subtitles
                 ? "src/components/Settings/assets/sous-titres.png"
                 : "src/components/Settings/assets/sous-titres-off.png"
             }
