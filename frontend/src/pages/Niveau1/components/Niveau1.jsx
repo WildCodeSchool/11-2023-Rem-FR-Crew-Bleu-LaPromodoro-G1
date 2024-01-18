@@ -53,9 +53,9 @@ function Niveau1() {
           onAjouter={() => ajouterAuInventaire(indice)}
         />
       ))}
-      <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
       <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
       {sousTitre && <SousTitres subtitles={subtitles} />}
+      <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
     </div>
   );
 }
