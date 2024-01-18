@@ -3,17 +3,14 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from "./App";
+// import App from "./App";
+import Accueil from "./pages/MenuPrincipal/component/Accueil";
 import Niveau1 from "./pages/Niveau1/components/Niveau1";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "/menu-principal",
-    // element: <Accueil />,
+    element: <Accueil />,
   },
   {
     path: "/niveau1",

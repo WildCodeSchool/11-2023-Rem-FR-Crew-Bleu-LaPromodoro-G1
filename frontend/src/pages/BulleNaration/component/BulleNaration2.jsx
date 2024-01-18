@@ -4,11 +4,11 @@ import closeIcon from "../assets/btn-text.png";
 import "../../../App.scss";
 
 function BulleNaration() {
-  const [modalNar, setModalNar] = useState(true);
+  const [modal, setModal] = useState(true);
   const [currentText, setCurrentText] = useState(1);
 
   const toggleModal = () => {
-    setModalNar((prevModalNar) => !prevModalNar);
+    setModal((prevModal) => !prevModal);
   };
 
   useEffect(() => {
@@ -30,47 +30,39 @@ function BulleNaration() {
 
   return (
     <div>
-      {modalNar && (
-        <div className="modal-div">
-          <div className="overlayNar">
-            <div className="modalNar-content">
+      {modal && (
+        <div className="modal">
+          <div className="overlay">
+            <div className="modal-content">
               <h2>GERARD HADD :</h2>
               <img
-                className="close-modalNar"
+                className="close-modal"
                 src={closeIcon}
                 alt="Close"
                 onClick={toggleModal}
               />
               {currentText === 1 && (
                 <p className={`text${currentText}`}>
-                  "Aie.. Ma tête… Mais.. ?! Où je suis là ?"
+                  “Encore une salle … :soupire:”
                 </p>
               )}
               {currentText === 2 && (
                 <p className={`text${currentText}`}>
-                  "Je ne me rappelle de rien."
+                  “Toutes ces roulettes me font tourner la tête !”
                 </p>
               )}
               {currentText === 3 && (
                 <p className={`text${currentText}`}>
-                  "Pourquoi je suis dans un casino ?"
+                  “Ah, j'aperçois une autre porte, verrouillée celle-ci aussi…”
                 </p>
               )}
               {currentText === 4 && (
                 <p className={`text${currentText}`}>
-                  "La salle me semble étrange, je n'y vois qu'une seule porte."
+                  “Je vais devoir encore me débrouiller pour la dévérouiller.”
                 </p>
               )}
               {currentText === 5 && (
-                <p className={`text${currentText}`}>
-                  "Hmm, elle semble verrouillée... Je vais devoir trouver un
-                  moyen de sortir de cette salle."
-                </p>
-              )}
-              {currentText === 6 && (
-                <p className={`text${currentText}`}>
-                  "Dans quelle galère je me suis fourré..."
-                </p>
+                <p className={`text${currentText}`}>“Raaaah”</p>
               )}
             </div>
           </div>

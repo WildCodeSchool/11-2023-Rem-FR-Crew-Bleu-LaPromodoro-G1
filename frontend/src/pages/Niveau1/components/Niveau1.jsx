@@ -4,6 +4,7 @@ import AjoutIndice from "./AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau1.scss";
 import BulleNaration from "../../BulleNaration/component/BulleNaration";
+// import SousTitres from "../../../components/SousTitres";
 
 function Niveau1() {
   const [inventaire, setInventaire] = useState([]);
@@ -39,6 +40,7 @@ function Niveau1() {
   return (
     <div className="background">
       <BulleNaration />
+      {/* <SousTitres /> */}
       {indicesAffiches.map((indice) => (
         <AjoutIndice
           key={indice.id}
