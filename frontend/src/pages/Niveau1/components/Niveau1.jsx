@@ -4,11 +4,12 @@ import AjoutIndice from "./AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau1.scss";
 import BulleNaration from "../../BulleNaration/component/BulleNaration";
-// import SousTitres from "../../../components/SousTitres";
+import SousTitres from "../../../components/SousTitres";
 
 function Niveau1() {
   const [inventaire, setInventaire] = useState([]);
   const [indicesAffiches, setIndicesAffiches] = useState([]);
+  const [subtitles, setSubtitles] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:5000/scene1")
@@ -38,18 +39,19 @@ function Niveau1() {
   };
 
   return (
-    <div className="background">
+    <div className="background-container">
       <BulleNaration />
-      {/* <SousTitres /> */}
       {indicesAffiches.map((indice) => (
         <AjoutIndice
           key={indice.id}
           indice={indice}
           onAjouter={() => ajouterAuInventaire(indice)}
+          onClick={() => setSubtitles("")}
         />
       ))}
       <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
       <Settings />
+      <SousTitres sousTitre={subtitles} />
     </div>
   );
 }

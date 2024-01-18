@@ -61,7 +61,7 @@ function Inventaire({ items }) {
             >
               <img
                 src={`http://localhost:5000${item.picture}`}
-                alt={item.nom}
+                alt={item.name}
                 style={{ width: "50px", height: "auto" }}
               />
             </button>
@@ -84,7 +84,7 @@ Inventaire.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       image: PropTypes.string.isRequired,
-      nom: PropTypes.string.isRequired,
+      name: PropTypes.string,
     })
   ).isRequired,
 };
