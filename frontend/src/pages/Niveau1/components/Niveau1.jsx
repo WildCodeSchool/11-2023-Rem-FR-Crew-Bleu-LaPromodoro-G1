@@ -4,6 +4,7 @@ import AjoutIndice from "./AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau1.scss";
 import BulleNaration from "../../BulleNaration/component/BulleNaration";
+import HelpBtn from "../../../components/Help/HelpBtn";
 // import SousTitres from "../../../components/SousTitres";
 
 function Niveau1() {
@@ -41,15 +42,20 @@ function Niveau1() {
     <div className="background">
       <BulleNaration />
       {/* <SousTitres /> */}
-      {indicesAffiches.map((indice) => (
-        <AjoutIndice
-          key={indice.id}
-          indice={indice}
-          onAjouter={() => ajouterAuInventaire(indice)}
-        />
-      ))}
-      <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
-      <Settings />
+      <div className="nav">
+        {indicesAffiches.map((indice) => (
+          <AjoutIndice
+            key={indice.id}
+            indice={indice}
+            onAjouter={() => ajouterAuInventaire(indice)}
+          />
+        ))}
+        <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
+        <div className="buttons">
+          <HelpBtn />
+          <Settings />
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,4 +3,19 @@
   width: 100vw;
   height: 100vh;
   position: relative;
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
 }
