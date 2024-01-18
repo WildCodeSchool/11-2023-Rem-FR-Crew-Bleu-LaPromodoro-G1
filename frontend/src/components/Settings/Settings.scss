@@ -4,10 +4,9 @@
 }
 
 #parametres {
-  position: fixed;
-  top: 0;
+  position: absolute;
   right: 0;
-
+  z-index: 0;
   background-color: #313131;
   border-radius: 5rem;
 

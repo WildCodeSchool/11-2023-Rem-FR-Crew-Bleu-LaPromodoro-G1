@@ -13,8 +13,8 @@ function AjoutIndice({ indice, onAjouter }) {
       alt={indice.name}
       style={{
         position: "absolute",
-        left: `${indice.x}px`,
-        top: `${indice.y}px`,
+        left: `${indice.x}%`,
+        top: `${indice.y}%`,
         width: `${indice.largeur}px`,
         height: "auto",
       }}
