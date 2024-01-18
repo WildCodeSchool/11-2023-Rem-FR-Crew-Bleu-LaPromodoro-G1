@@ -10,6 +10,7 @@ function Niveau1() {
   const [inventaire, setInventaire] = useState([]);
   const [indicesAffiches, setIndicesAffiches] = useState([]);
   const [subtitles, setSubtitles] = useState("");
+  const [sousTitre, setSousTitre] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:5000/scene1")
@@ -31,6 +32,10 @@ function Niveau1() {
         indicesAffiches.filter((item) => item.id !== indice.id)
       );
     }
+    setSubtitles(indice.subtitles);
+    setTimeout(() => {
+      setSubtitles("");
+    }, 5000);
   };
   const ouvrirSplineUrl = (item) => {
     if (item.splineUrl) {
@@ -46,12 +51,11 @@ function Niveau1() {
           key={indice.id}
           indice={indice}
           onAjouter={() => ajouterAuInventaire(indice)}
-          onClick={() => setSubtitles("")}
         />
       ))}
       <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
-      <Settings />
-      <SousTitres sousTitre={subtitles} />
+      <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
+      {sousTitre && <SousTitres subtitles={subtitles} />}
     </div>
   );
 }

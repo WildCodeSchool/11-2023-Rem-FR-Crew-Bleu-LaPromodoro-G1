@@ -1,15 +1,15 @@
 import "../styles/SousTitres.scss";
 import PropTypes from "prop-types";
 
-function SousTitres({ sousTitre }) {
+function SousTitres({ subtitles }) {
   return (
     <div className="subtitlesContainer">
-      <p> {sousTitre}</p>
+      <p> {subtitles}</p>
     </div>
   );
 }
 
 SousTitres.propTypes = {
-  sousTitre: PropTypes.string.isRequired,
+  subtitles: PropTypes.string.isRequired,
 };
 export default SousTitres;

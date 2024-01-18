@@ -1,15 +1,14 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import "./Settings.scss";
-import SousTitres from "../SousTitres";
 
-function Settings() {
+function Settings({ sousTitre, setSousTitre }) {
   const [active, setActive] = useState(false);
-  const [subtitles, setSubtitles] = useState(false);
   const [muted, setMuted] = useState(false);
   const toggleActive = () => (active ? setActive(false) : setActive(true));
-  const toggleSubtitles = () =>
-    subtitles ? setSubtitles(false) : setSubtitles(true);
+  const toggleSousTitre = () => setSousTitre(!sousTitre);
   const toggleMuted = () => (muted ? setMuted(false) : setMuted(true));
+  console.warn("sousTitre:", sousTitre, "setSousTitre:", setSousTitre);
 
   return (
     <div id="parametres">
@@ -41,19 +40,22 @@ function Settings() {
             alt="couper le son"
           />
           <img
-            onClick={toggleSubtitles}
+            onClick={toggleSousTitre}
             id="subtitles"
             src={
-              subtitles
+              sousTitre
                 ? "src/components/Settings/assets/sous-titres.png"
                 : "src/components/Settings/assets/sous-titres-off.png"
             }
             alt="activer / desactiver les sous-titres"
           />
-          {subtitles && <SousTitres />}
         </div>
       )}
     </div>
   );
 }
+Settings.propTypes = {
+  sousTitre: PropTypes.bool.isRequired,
+  setSousTitre: PropTypes.func.isRequired,
+};
 export default Settings;
