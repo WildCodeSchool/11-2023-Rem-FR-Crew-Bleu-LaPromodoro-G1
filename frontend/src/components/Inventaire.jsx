@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import valiseFermerImage from "../assets/ValiseFermer.png";
 import valiseOuverteImage from "../assets/ValiseOuverte.png";
-import "../styles/Inventaire.css";
+import "../styles/Inventaire.scss";
 import Modal from "./Modal";
 
 function Inventaire({ items }) {
@@ -60,7 +60,7 @@ function Inventaire({ items }) {
               className="item-button"
             >
               <img
-                src={item.image}
+                src={`http://localhost:5000${item.picture}`}
                 alt={item.nom}
                 style={{ width: "50px", height: "auto" }}
               />
@@ -70,7 +70,10 @@ function Inventaire({ items }) {
       )}
 
       {selectedItem && (
-        <Modal splineUrl={selectedItem.splineUrl} onClose={() => setSelectedItem(null)}/>
+        <Modal
+          splineUrl={selectedItem.splineUrl}
+          onClose={() => setSelectedItem(null)}
+        />
       )}
     </div>
   );
