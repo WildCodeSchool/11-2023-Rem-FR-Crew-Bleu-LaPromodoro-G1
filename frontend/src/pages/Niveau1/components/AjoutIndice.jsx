@@ -15,6 +15,7 @@ function AjoutIndice({ indice, onAjouter }) {
         position: "absolute",
         left: `${indice.x}%`,
         top: `${indice.y}%`,
+        rotationDegree: `${indice.rotation}%`,
         width: `${indice.largeur}px`,
         height: "auto",
       }}
@@ -31,6 +32,7 @@ AjoutIndice.propTypes = {
     name: PropTypes.string.isRequired,
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
+    rotation: PropTypes.number.isRequired,
     largeur: PropTypes.number.isRequired,
   }).isRequired,
   onAjouter: PropTypes.func.isRequired,

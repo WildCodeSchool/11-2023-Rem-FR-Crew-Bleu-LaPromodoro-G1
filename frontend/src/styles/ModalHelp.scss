@@ -15,13 +15,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Ajoute une semi-transparence à l'arrière-plan */
-  z-index: -1; /* Une valeur légèrement inférieure à celle de la modal pour que la modal soit cliquable */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,10 +25,10 @@
 
 .close-modal-help {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 80px;
+  right: 170px;
   width: 40px;
-  z-index: 1; /* Une valeur plus élevée que la modal pour être au-dessus */
+  z-index: 1;
   cursor: pointer;
 }
 
@@ -45,5 +40,5 @@
   justify-content: space-evenly;
   height: 500px;
   width: 500px;
-  z-index: 0; /* Assurez-vous que le contenu est sur le même niveau que la modal */
+  z-index: 0;
 }
