@@ -4,6 +4,8 @@ import AjoutIndice from "./AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau1.scss";
 import BulleNaration from "../../BulleNaration/component/BulleNaration";
+import HelpBtn from "../../../components/Help/HelpBtn";
+// import SousTitres from "../../../components/SousTitres";
 import SousTitres from "../../../components/SousTitres";
 
 function Niveau1() {
@@ -73,9 +75,14 @@ function Niveau1() {
           onAjouter={() => ajouterAuInventaire(indice)}
         />
       ))}
-      <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
-      {sousTitre && <SousTitres subtitles={subtitles} />}
-      <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
+      <div className="nav">
+        <div className="buttons">
+          <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
+          <HelpBtn />
+        </div>
+        {sousTitre && <SousTitres subtitles={subtitles} />}
+        <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
+      </div>
     </div>
   );
 }
