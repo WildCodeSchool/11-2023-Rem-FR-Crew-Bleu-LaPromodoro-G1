@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import App from "./App";
 import Accueil from "./pages/MenuPrincipal/component/Accueil";
 import Niveau1 from "./pages/Niveau1/components/Niveau1";
+import FinalPage from "./pages/FinalPage/components/FinalPage";
+import YesPage from "./pages/FinalPage/components/YesPage";
+import NoPage from "./pages/FinalPage/components/NoPage";
 
 const router = createBrowserRouter([
   {
@@ -33,12 +36,16 @@ const router = createBrowserRouter([
     // element: </>
   },
   {
+    path: "/pagefinale",
+    element: <FinalPage />,
+  },
+  {
     path: "/cimetiere",
-    // element: </>
+    element: <YesPage />,
   },
   {
     path: "/asile",
-    // element: </>
+    element: <NoPage />,
   },
 ]);
 
