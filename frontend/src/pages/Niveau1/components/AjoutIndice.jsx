@@ -15,6 +15,7 @@ function AjoutIndice({ indice, onAjouter }) {
   };
 
   const currentStage = useLocation().pathname;
+  localStorage.setItem("currentStage", currentStage);
 
   return (
     <>
