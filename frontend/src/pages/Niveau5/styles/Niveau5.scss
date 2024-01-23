@@ -1,8 +1,13 @@
 .background-container5 {
   background-image: url("../assets/lvl5.png");
-  width: 100vw;
-  width: calc(1.75 * 100vh);
-  height: 100vh;
-  background-size: cover;
-  margin: auto;
+  min-width: calc(1.75 * 100vh);
+  max-width: calc(1.75 * 100vh);
+  min-height: 100vh;
+  max-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+
+  position: relative;
 }
