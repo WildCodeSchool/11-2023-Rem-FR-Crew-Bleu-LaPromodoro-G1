@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Inventaire from "../../../components/Inventaire";
-import AjoutIndice from "./AjoutIndice";
+import AjoutIndice from "../../Niveau1/components/AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
-import "../styles/Niveau1.scss";
-import BulleNaration from "../../BulleNaration/component/BulleNaration";
+import "../styles/Niveau3.scss";
 import HelpBtn from "../../../components/Help/HelpBtn";
 // import SousTitres from "../../../components/SousTitres";
 import SousTitres from "../../../components/SousTitres";
 
-function Niveau1() {
+function Niveau3() {
   const [inventaire, setInventaire] = useState([]);
   const [indicesAffiches, setIndicesAffiches] = useState([]);
   const [subtitles, setSubtitles] = useState("");
@@ -23,7 +22,7 @@ function Niveau1() {
       setInventaire(inventaireInitial);
     }
 
-    fetch("http://localhost:5000/scene1")
+    fetch("http://localhost:5000/scene3")
       .then((response) => response.json())
       .then((data) => {
         const indicesFiltres = data.filter(
@@ -66,8 +65,7 @@ function Niveau1() {
   };
 
   return (
-    <div className="background-container">
-      <BulleNaration />
+    <div className="background-container3">
       {indicesAffiches.map((indice) => (
         <AjoutIndice
           key={indice.id}
@@ -87,4 +85,4 @@ function Niveau1() {
   );
 }
 
-export default Niveau1;
+export default Niveau3;

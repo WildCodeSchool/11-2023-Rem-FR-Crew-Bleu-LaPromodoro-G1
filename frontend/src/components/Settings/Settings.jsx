@@ -1,13 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Settings.scss";
 
 function Settings({ sousTitre, setSousTitre }) {
   const [active, setActive] = useState(false);
   const [muted, setMuted] = useState(false);
-  const toggleActive = () => (active ? setActive(false) : setActive(true));
-  const toggleSousTitre = () => setSousTitre(!sousTitre);
-  const toggleMuted = () => (muted ? setMuted(false) : setMuted(true));
+
+  // Chargement de l'état initial de sousTitre du localStorage
+  useEffect(() => {
+    const savedSousTitre = localStorage.getItem("sousTitres");
+    if (savedSousTitre !== null) {
+      setSousTitre(JSON.parse(savedSousTitre));
+    }
+  }, [setSousTitre]);
+
+  const toggleActive = () => setActive(!active);
+  const toggleMuted = () => setMuted(!muted);
+
+  const toggleSousTitre = () => {
+    const newSousTitreState = !sousTitre;
+    setSousTitre(newSousTitreState);
+    localStorage.setItem("sousTitres", JSON.stringify(newSousTitreState));
+  };
+
   console.warn("sousTitre:", sousTitre, "setSousTitre:", setSousTitre);
 
   return (
@@ -54,8 +69,10 @@ function Settings({ sousTitre, setSousTitre }) {
     </div>
   );
 }
+
 Settings.propTypes = {
   sousTitre: PropTypes.bool.isRequired,
   setSousTitre: PropTypes.func.isRequired,
 };
+
 export default Settings;
