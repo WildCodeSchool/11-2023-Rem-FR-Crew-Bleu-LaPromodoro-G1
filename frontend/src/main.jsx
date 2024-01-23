@@ -10,6 +10,9 @@ import Niveau2 from "./pages/Niveau2/components/Niveau2";
 import Niveau3 from "./pages/Niveau3/components/Niveau3";
 import Niveau4 from "./pages/Niveau4/components/Niveau4";
 import Niveau5 from "./pages/Niveau5/components/Niveau5";
+import FinalPage from "./pages/FinalPage/components/FinalPage";
+import YesPage from "./pages/FinalPage/components/YesPage";
+import NoPage from "./pages/FinalPage/components/NoPage";
 
 const router = createBrowserRouter([
   {
@@ -37,12 +40,16 @@ const router = createBrowserRouter([
     element: <Niveau5 />,
   },
   {
+    path: "/pagefinale",
+    element: <FinalPage />,
+  },
+  {
     path: "/cimetiere",
-    // element: </>
+    element: <YesPage />,
   },
   {
     path: "/asile",
-    // element: </>
+    element: <NoPage />,
   },
 ]);
 

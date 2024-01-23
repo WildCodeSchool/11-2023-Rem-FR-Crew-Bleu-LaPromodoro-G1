@@ -1,0 +1,48 @@
+.bg-finalpage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  background-color: rgb(10, 10, 10);
+  color: aliceblue;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    text-transform: uppercase;
+
+    .links:visited {
+      font-size: 1.6rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    .links:link {
+      font-size: 1.6rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    .links:hover {
+      color: #e1525f;
+      transform: scale(1.2);
+      font-size: 1.6rem;
+      text-decoration: none;
+    }
+
+    .links:active {
+      font-size: 1.6rem;
+      color: aliceblue;
+      text-decoration: none;
+    }
+  }
+}

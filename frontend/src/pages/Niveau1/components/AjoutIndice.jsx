@@ -1,27 +1,48 @@
-import React from "react";
+import { React, useState } from "react";
 import PropTypes from "prop-types"; // Importer PropTypes
+import { useLocation } from "react-router-dom";
+import PasserSalle from "../../../components/PassageDeSalle/PasserSalle";
 
 function AjoutIndice({ indice, onAjouter }) {
+  const [open, setOpen] = useState(false);
+
   const handleImageError = () => {
     console.error(`Erreur de chargement de l'image : ${indice.picture}`);
   };
 
+  const openDoor = () => {
+    setOpen(true);
+  };
+
+  const currentStage = useLocation().pathname;
+
   return (
-    <img
-      className="ajout"
-      src={`http://localhost:5000${indice.picture}`}
-      alt={indice.name}
-      style={{
-        position: "absolute",
-        left: `${indice.x}%`,
-        top: `${indice.y}%`,
-        rotationDegree: `${indice.rotation}%`,
-        width: `${indice.largeur}px`,
-        height: "auto",
-      }}
-      onClick={() => onAjouter(indice)}
-      onError={handleImageError}
-    />
+    <>
+      <img
+        className="ajout"
+        src={`http://localhost:5000${indice.picture}`}
+        alt={indice.name}
+        style={{
+          position: "absolute",
+          left: `${indice.x}%`,
+          top: `${indice.y}%`,
+          rotationDegree: `${indice.rotation}%`,
+          width: `${indice.largeur}px`,
+          height: "auto",
+        }}
+        onClick={
+          indice.name === "cadenas" ? () => openDoor() : () => onAjouter(indice)
+        }
+        onError={handleImageError}
+      />
+      {open && (
+        <PasserSalle
+          secretCode={indice.code}
+          setOpen={setOpen}
+          currentStage={currentStage}
+        />
+      )}
+    </>
   );
 }
 
@@ -34,6 +55,7 @@ AjoutIndice.propTypes = {
     y: PropTypes.number.isRequired,
     rotation: PropTypes.number.isRequired,
     largeur: PropTypes.number.isRequired,
+    code: PropTypes.number.isRequired,
   }).isRequired,
   onAjouter: PropTypes.func.isRequired,
 };
