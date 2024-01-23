@@ -40,10 +40,17 @@ function Accueil() {
         </div>
         <div id="launcher">
           <Link to="/niveau1">
-            <button type="button">Nouvelle partie</button>
+            <button type="button" onClick={() => localStorage.clear()}>
+              Nouvelle partie
+            </button>
           </Link>
-          <Link to="/">
-            {" "}
+          <Link
+            to={
+              localStorage.getItem("currentStage")
+                ? `${localStorage.getItem("currentStage")}`
+                : "/niveau1"
+            }
+          >
             <button type="button">Continuer</button>
           </Link>
         </div>

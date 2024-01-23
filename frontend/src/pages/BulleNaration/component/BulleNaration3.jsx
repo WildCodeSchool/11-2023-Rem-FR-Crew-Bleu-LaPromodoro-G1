@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./BulleNaration.scss";
+import "./BulleNaration3.scss";
 import closeIcon from "../assets/btn-text.png";
 import "../../../App.scss";
 
 function BulleNaration() {
-  const [modal, setModal] = useState(true);
+  const [modalNar, setModalNar] = useState(true);
   const [currentText, setCurrentText] = useState(1);
 
   const toggleModal = () => {
-    setModal((prevModal) => !prevModal);
+    setModalNar((prevModalNar) => !prevModalNar);
   };
 
   useEffect(() => {
@@ -30,13 +31,13 @@ function BulleNaration() {
 
   return (
     <div>
-      {modal && (
-        <div className="modal">
-          <div className="overlay">
-            <div className="modal-content">
+      {modalNar && (
+        <div className="modal-div">
+          <div className="overlayNar">
+            <div className="modalNar-content">
               <h2>GERARD HADD :</h2>
               <img
-                className="close-modal"
+                className="close-modalNar"
                 src={closeIcon}
                 alt="Close"
                 onClick={toggleModal}

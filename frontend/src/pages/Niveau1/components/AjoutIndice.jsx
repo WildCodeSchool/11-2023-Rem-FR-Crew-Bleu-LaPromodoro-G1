@@ -11,10 +11,40 @@ function AjoutIndice({ indice, onAjouter }) {
   };
 
   const openDoor = () => {
-    setOpen(true);
+    switch (localStorage.getItem("currentStage")) {
+      case "/niveau1":
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 1)
+          setOpen(true);
+        break;
+
+      case "/niveau2":
+        if (JSON.parse(localStorage.getItem("inventaire"))[1].id === 100)
+          setOpen(true);
+        break;
+
+      case "/niveau3":
+        if (JSON.parse(localStorage.getItem("inventaire"))[2].id === 200)
+          setOpen(true);
+        break;
+
+      case "/niveau4":
+        if (JSON.parse(localStorage.getItem("inventaire"))[3].id === 300)
+          setOpen(true);
+        break;
+
+      case "/niveau5":
+        if (JSON.parse(localStorage.getItem("inventaire"))[4].id === 400)
+          setOpen(true);
+        break;
+
+      default:
+        console.error("Error 404");
+        break;
+    }
   };
 
   const currentStage = useLocation().pathname;
+  localStorage.setItem("currentStage", currentStage);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BulleNaration.scss";
-import "./BulleNaration2.scss";
+import "./BulleNaration5.scss";
 import closeIcon from "../assets/btn-text.png";
 import "../../../App.scss";
 
@@ -44,26 +44,32 @@ function BulleNaration() {
               />
               {currentText === 1 && (
                 <p className={`text${currentText}`}>
-                  “Encore une salle … :soupire:”
+                  "'Oooh la jolie salle !'"
                 </p>
               )}
               {currentText === 2 && (
                 <p className={`text${currentText}`}>
-                  “Toutes ces roulettes me font tourner la tête !”
+                  "'Non elle me fait peur :effrayé:'"
                 </p>
               )}
               {currentText === 3 && (
-                <p className={`text${currentText}`}>
-                  “Ah, j'aperçois une autre porte, verrouillée celle-ci aussi…”
-                </p>
+                <p className={`text${currentText}`}>"'J entends des voix"</p>
               )}
               {currentText === 4 && (
-                <p className={`text${currentText}`}>
-                  “Je vais devoir encore me débrouiller pour la dévérouiller.”
-                </p>
+                <p className={`text${currentText}`}>"':pleure:'"</p>
               )}
               {currentText === 5 && (
-                <p className={`text${currentText}`}>“Raaaah”</p>
+                <p className={`text${currentText}`}>"':rire:'"</p>
+              )}
+              {currentText === 6 && (
+                <p className={`text${currentText}`}>
+                  "'A l aiiiiiiiiiide :cri:!'"
+                </p>
+              )}
+              {currentText === 7 && (
+                <p className={`text${currentText}`}>
+                  "'Libérez moi :supplice:'"
+                </p>
               )}
             </div>
           </div>
