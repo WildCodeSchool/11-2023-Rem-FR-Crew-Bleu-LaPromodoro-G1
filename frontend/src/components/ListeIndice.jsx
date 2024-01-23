@@ -1,31 +1,19 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import "./ListeIndice.scss";
 import imgBtn from "./Help/assets/btn-text.png";
 
-function ListeIndice() {
+function ListeIndice({ checkedItems, handleIndiceClick, blurredIndices }) {
   const [list, setList] = useState(false);
-  const [checkedItems, setCheckedItems] = useState({
-    item1: false,
-    item2: false,
-    item3: false,
-    item4: false,
-  });
 
   const scrollingMenu = () => {
     setList(!list);
   };
 
-  const handleCheckboxChange = (item) => {
-    setCheckedItems((prevCheckedItems) => ({
-      ...prevCheckedItems,
-      [item]: !prevCheckedItems[item],
-    }));
-  };
-
   return (
     <div className="menu">
       <div className="scrollMenu">
-        <p>Indices découverts (0/5)</p>
+        <p>Indices découverts</p>
         <img
           src={imgBtn}
           className="imgBtn"
@@ -36,46 +24,19 @@ function ListeIndice() {
       {list && (
         <div className="listClues">
           <ul>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={checkedItems.item1}
-                  onChange={() => handleCheckboxChange("item1")}
-                />
-                Lampe
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={checkedItems.item2}
-                  onChange={() => handleCheckboxChange("item2")}
-                />
-                Cadre
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={checkedItems.item3}
-                  onChange={() => handleCheckboxChange("item3")}
-                />
-                Poulet
-              </label>
-            </li>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={checkedItems.item4}
-                  onChange={() => handleCheckboxChange("item4")}
-                />
-                Chat
-              </label>
-            </li>
+            {Object.entries(checkedItems).map(([itemName, isChecked]) => {
+              const isBlurred = blurredIndices.includes(itemName);
+              return (
+                <li key={itemName} onClick={() => handleIndiceClick(itemName)}>
+                  <label>
+                    <input type="checkbox" checked={isChecked} readOnly />
+                    <span className={isBlurred ? "blurred" : ""}>
+                      {itemName}
+                    </span>
+                  </label>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

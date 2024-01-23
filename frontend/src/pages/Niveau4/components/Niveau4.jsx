@@ -4,18 +4,18 @@ import AjoutIndice from "../../Niveau1/components/AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau4.scss";
 import HelpBtn from "../../../components/Help/HelpBtn";
-// import SousTitres from "../../../components/SousTitres";
 import SousTitres from "../../../components/SousTitres";
 
 function Niveau4() {
   const [inventaire, setInventaire] = useState([]);
   const [indicesAffiches, setIndicesAffiches] = useState([]);
   const [subtitles, setSubtitles] = useState("");
-  const [sousTitre, setSousTitre] = useState();
+  const [sousTitre, setSousTitre] = useState(false);
+  const [checkedItems, setCheckedItems] = useState({});
+  const [blurredIndices, setBlurredIndices] = useState([]);
 
   useEffect(() => {
     const savedInventaire = localStorage.getItem("inventaire");
-
     let inventaireInitial = [];
     if (savedInventaire) {
       inventaireInitial = JSON.parse(savedInventaire);
@@ -29,10 +29,35 @@ function Niveau4() {
           (indice) => !inventaireInitial.some((item) => item.id === indice.id)
         );
         setIndicesAffiches(indicesFiltres);
+
+        const initialCheckedItems = {};
+        data.forEach((item) => {
+          if (item.indice) {
+            initialCheckedItems[item.name] = false;
+          }
+        });
+        setCheckedItems(initialCheckedItems);
+
+        const initialBlurredIndices = data
+          .filter((item) => item.indice)
+          .map((item) => item.name);
+        setBlurredIndices(initialBlurredIndices);
       })
       .catch((error) => {
         console.error("Erreur lors du chargement des données:", error);
       });
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBlurredIndices((prev) => {
+        const updated = [...prev];
+        if (updated.length > 0) updated.shift();
+        return updated;
+      });
+    }, 6000); // 60000 ms = 1 minute
+
+    return () => clearInterval(timer);
   }, []);
 
   const ajouterAuInventaire = (indice) => {
@@ -64,6 +89,13 @@ function Niveau4() {
     }
   };
 
+  const handleIndiceClick = (indiceName) => {
+    setCheckedItems((prevItems) => ({
+      ...prevItems,
+      [indiceName]: true,
+    }));
+  };
+
   return (
     <div className="background-container4">
       {indicesAffiches.map((indice) => (
@@ -76,7 +108,12 @@ function Niveau4() {
       <div className="nav">
         <div className="buttons">
           <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
-          <HelpBtn />
+          <HelpBtn
+            niveau={1}
+            checkedItems={checkedItems}
+            handleIndiceClick={handleIndiceClick}
+            blurredIndices={blurredIndices}
+          />
         </div>
         {sousTitre && <SousTitres subtitles={subtitles} />}
         <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />

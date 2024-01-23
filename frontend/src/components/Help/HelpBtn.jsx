@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import "./HelpBtn.scss";
 import imgHelp from "./assets/imgHelp.png";
 import ModalHelp from "../ModalHelp";
 
-function HelpBtn() {
+function HelpBtn({ niveau, checkedItems, handleIndiceClick, blurredIndices }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -22,7 +23,15 @@ function HelpBtn() {
         alt="Help Button"
         onClick={openModal}
       />
-      {modalOpen && <ModalHelp onClose={closeModal} />}
+      {modalOpen && (
+        <ModalHelp
+          onClose={closeModal}
+          niveau={niveau}
+          checkedItems={checkedItems}
+          handleIndiceClick={handleIndiceClick}
+          blurredIndices={blurredIndices}
+        />
+      )}
     </div>
   );
 }
