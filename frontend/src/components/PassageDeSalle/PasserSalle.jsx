@@ -6,13 +6,13 @@ import "./PasserSalle.scss";
 function PasserSalle({ secretCode, setOpen, currentStage }) {
   const currentStageTab = currentStage.split("");
   const stage = currentStageTab.pop("");
-  currentStageTab.push(parseInt(stage, 2) + 1);
+  currentStageTab.push(parseInt(stage, 10) + 1);
   const nextStage = currentStageTab.join("");
 
   const [unlock, setUnlock] = useState(false);
 
   const codeRight = (code) => {
-    if (parseInt(code.target.value, 2) === parseInt(secretCode, 2)) {
+    if (parseInt(code.target.value, 10) === parseInt(secretCode, 10)) {
       setUnlock(true);
     } else {
       setUnlock(false);
