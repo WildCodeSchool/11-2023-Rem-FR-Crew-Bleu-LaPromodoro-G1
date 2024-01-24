@@ -6,8 +6,7 @@ import SousTitres from "../../../components/SousTitres";
 
 function AjoutIndice({ indice, onAjouter }) {
   const [open, setOpen] = useState(false);
-  const [subtiles, setSubtiles] = useState("");
-  const texte = "Je devrais encore continuer d'explorer la salle...";
+  const [nePassePas, setnePassePas] = useState(false);
 
   const handleImageError = () => {
     console.error(`Erreur de chargement de l'image : ${indice.picture}`);
@@ -19,9 +18,9 @@ function AjoutIndice({ indice, onAjouter }) {
         if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 1) {
           setOpen(true);
         } else {
-          setSubtiles(texte);
+          setnePassePas(true);
           setTimeout(() => {
-            setSubtiles("");
+            setnePassePas(false);
           }, 5000);
         }
         break;
@@ -30,9 +29,9 @@ function AjoutIndice({ indice, onAjouter }) {
         if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 100) {
           setOpen(true);
         } else {
-          setSubtiles(texte);
+          setnePassePas(true);
           setTimeout(() => {
-            setSubtiles("");
+            setnePassePas(false);
           }, 5000);
         }
         break;
@@ -41,9 +40,9 @@ function AjoutIndice({ indice, onAjouter }) {
         if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 200) {
           setOpen(true);
         } else {
-          setSubtiles(texte);
+          setnePassePas(true);
           setTimeout(() => {
-            setSubtiles("");
+            setnePassePas(false);
           }, 5000);
         }
         break;
@@ -52,9 +51,9 @@ function AjoutIndice({ indice, onAjouter }) {
         if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 300) {
           setOpen(true);
         } else {
-          setSubtiles(texte);
+          setnePassePas(true);
           setTimeout(() => {
-            setSubtiles("");
+            setnePassePas(false);
           }, 5000);
         }
         break;
@@ -63,9 +62,9 @@ function AjoutIndice({ indice, onAjouter }) {
         if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 400) {
           setOpen(true);
         } else {
-          setSubtiles(texte);
+          setnePassePas(true);
           setTimeout(() => {
-            setSubtiles("");
+            setnePassePas(false);
           }, 5000);
         }
         break;
@@ -105,8 +104,11 @@ function AjoutIndice({ indice, onAjouter }) {
           currentStage={currentStage}
         />
       ) : (
-        <SousTitres subtitles={subtiles} />
+        nePassePas && (
+          <SousTitres subtitles="Je devrais encore continuer d'explorer la salle..." />
+        )
       )}
+      ;
     </>
   );
 }
