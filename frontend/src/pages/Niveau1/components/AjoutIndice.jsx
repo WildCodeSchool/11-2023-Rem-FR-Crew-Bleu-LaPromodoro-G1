@@ -2,9 +2,11 @@ import { React, useState } from "react";
 import PropTypes from "prop-types"; // Importer PropTypes
 import { useLocation } from "react-router-dom";
 import PasserSalle from "../../../components/PassageDeSalle/PasserSalle";
+import SousTitres from "../../../components/SousTitres";
 
 function AjoutIndice({ indice, onAjouter }) {
   const [open, setOpen] = useState(false);
+  const [nePassePas, setnePassePas] = useState(false);
 
   const handleImageError = () => {
     console.error(`Erreur de chargement de l'image : ${indice.picture}`);
@@ -13,28 +15,58 @@ function AjoutIndice({ indice, onAjouter }) {
   const openDoor = () => {
     switch (localStorage.getItem("currentStage")) {
       case "/niveau1":
-        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 1)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 1) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau2":
-        if (JSON.parse(localStorage.getItem("inventaire"))[1].id === 100)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 100) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau3":
-        if (JSON.parse(localStorage.getItem("inventaire"))[2].id === 200)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 200) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau4":
-        if (JSON.parse(localStorage.getItem("inventaire"))[3].id === 300)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 300) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau5":
-        if (JSON.parse(localStorage.getItem("inventaire"))[4].id === 400)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 400) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       default:
@@ -65,13 +97,18 @@ function AjoutIndice({ indice, onAjouter }) {
         }
         onError={handleImageError}
       />
-      {open && (
+      {open ? (
         <PasserSalle
           secretCode={indice.code}
           setOpen={setOpen}
           currentStage={currentStage}
         />
+      ) : (
+        nePassePas && (
+          <SousTitres subtitles="Je devrais encore continuer d'explorer la salle..." />
+        )
       )}
+      ;
     </>
   );
 }

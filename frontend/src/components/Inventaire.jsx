@@ -52,20 +52,25 @@ function Inventaire({ items }) {
           tabIndex={0}
           onKeyDown={(event) => handleKeyDown(event, () => {})}
         >
-          {items.map((item) => (
-            <button
-              type="button"
-              key={item.id}
-              onClick={() => handleItemClick(item)}
-              className="item-button"
-            >
-              <img
-                src={`http://localhost:5000${item.picture}`}
-                alt={item.name}
-                style={{ width: "50px", height: "auto" }}
-              />
-            </button>
-          ))}
+          {items.map((item) => {
+            if(item.id !== 0) {
+              return (
+                <button
+                  type="button"
+                  key={item.id}
+                  onClick={() => handleItemClick(item)}
+                  className="item-button"
+                >
+                  <img
+                    src={`http://localhost:5000${item.picture}`}
+                    alt={item.name}
+                    style={{ width: "50px", height: "auto" }}
+                  />
+                </button>
+              );
+            }
+            return undefined;
+          })}
         </div>
       )}
 
