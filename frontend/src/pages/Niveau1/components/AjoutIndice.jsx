@@ -51,6 +51,7 @@ function AjoutIndice({ indice, onAjouter }) {
       // eslint-disable-next-line react/prop-types
       `http://localhost:5000${indice.sound}`
     );
+    // eslint-disable-next-line react/prop-types
     audioRef.current = new Audio(`http://localhost:5000/${indice.sound}`);
 
     if (audioRef.current) {
