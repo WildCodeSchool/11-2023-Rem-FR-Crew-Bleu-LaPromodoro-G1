@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import PropTypes from "prop-types"; // Importer PropTypes
 import { useLocation } from "react-router-dom";
 import PasserSalle from "../../../components/PassageDeSalle/PasserSalle";
-import SousTitres from "../../../components/SousTitres";
 
 function AjoutIndice({ indice, onAjouter }) {
   const [open, setOpen] = useState(false);
@@ -93,20 +92,23 @@ function AjoutIndice({ indice, onAjouter }) {
           height: "auto",
         }}
         onClick={
-          indice.name === "cadenas" ? () => openDoor() : () => onAjouter(indice)
+          indice.name === "cadenas"
+            ? () => {
+                openDoor();
+                if (nePassePas) {
+                  onAjouter(indice);
+                }
+              }
+            : () => onAjouter(indice)
         }
         onError={handleImageError}
       />
-      {open ? (
+      {open && (
         <PasserSalle
           secretCode={indice.code}
           setOpen={setOpen}
           currentStage={currentStage}
         />
-      ) : (
-        nePassePas && (
-          <SousTitres subtitles="Je devrais encore continuer d'explorer la salle..." />
-        )
       )}
       ;
     </>
