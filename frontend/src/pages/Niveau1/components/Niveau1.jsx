@@ -7,12 +7,14 @@ import BulleNaration from "../../BulleNaration/component/BulleNaration";
 import HelpBtn from "../../../components/Help/HelpBtn";
 // import SousTitres from "../../../components/SousTitres";
 import SousTitres from "../../../components/SousTitres";
+// import Sons from "../../../components/Sons";
 
 function Niveau1() {
   const [inventaire, setInventaire] = useState([]);
   const [indicesAffiches, setIndicesAffiches] = useState([]);
   const [subtitles, setSubtitles] = useState("");
   const [sousTitre, setSousTitre] = useState();
+  // const [AudioUrl, setAudioUrl] = useState("");
 
   useEffect(() => {
     const savedInventaire = localStorage.getItem("inventaire");
@@ -54,6 +56,8 @@ function Niveau1() {
     }
 
     setSubtitles(indice.subtitles);
+    console.info(indice.sound);
+    // setAudioUrl(indice.sound); // URL du son
     setTimeout(() => {
       setSubtitles("");
     }, 5000);
@@ -72,7 +76,7 @@ function Niveau1() {
         <AjoutIndice
           key={indice.id}
           indice={indice}
-          onAjouter={() => ajouterAuInventaire(indice)}
+          onAjouter={() => ajouterAuInventaire(indice)} // add song
         />
       ))}
       <div className="nav">
@@ -82,6 +86,7 @@ function Niveau1() {
         </div>
         {sousTitre && <SousTitres subtitles={subtitles} />}
         <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
+        {/* <Sons AudioUrl={AudioUrl} /> */}
       </div>
     </div>
   );
