@@ -1,31 +1,44 @@
-import React, { useState } from "react";
-import "./ListeIndice.scss";
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from "react";
+import "./ObjectsRamasses.scss";
 import imgBtn from "./Help/assets/btn-text.png";
 
-function ListeIndice() {
+function ObjectsRamasses({ niveau, blurredItems = [] }) {
   const [list, setList] = useState(false);
-  const [checkedItems, setCheckedItems] = useState({
-    item1: false,
-    item2: false,
-    item3: false,
-    item4: false,
-  });
+  const [ramassedItems, setRamassedItems] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/scene${niveau}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const newRamassedItems = {};
+        data.forEach((item) => {
+          if (item.inventory) {
+            newRamassedItems[item.name] = false;
+          }
+        });
+        setRamassedItems(newRamassedItems);
+      })
+      .catch((error) => {
+        console.error("Erreur lors du chargement des données:", error);
+      });
+  }, [niveau]);
 
   const scrollingMenu = () => {
     setList(!list);
   };
 
-  const handleCheckboxChange = (item) => {
-    setCheckedItems((prevCheckedItems) => ({
-      ...prevCheckedItems,
-      [item]: !prevCheckedItems[item],
+  const handleCheckboxChange = (itemName) => {
+    setRamassedItems((prevItems) => ({
+      ...prevItems,
+      [itemName]: !prevItems[itemName],
     }));
   };
 
   return (
     <div className="menu">
       <div className="scrollMenu">
-        <p>Objets ramassés (0/1)</p>
+        <p>Objet à ramassé</p>
         <img
           src={imgBtn}
           className="imgBtn"
@@ -36,16 +49,23 @@ function ListeIndice() {
       {list && (
         <div className="listClues">
           <ul>
-            <li>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={checkedItems.item1}
-                  onChange={() => handleCheckboxChange("item1")}
-                />
-                Lampe
-              </label>
-            </li>
+            {Object.entries(ramassedItems).map(([itemName, isChecked]) => {
+              const isBlurred = blurredItems.includes(itemName);
+              return (
+                <li key={itemName}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => handleCheckboxChange(itemName)}
+                    />
+                    <span className={isBlurred ? "blurred" : ""}>
+                      {itemName}
+                    </span>
+                  </label>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
@@ -53,4 +73,4 @@ function ListeIndice() {
   );
 }
 
-export default ListeIndice;
+export default ObjectsRamasses;

@@ -8,6 +8,7 @@ function AjoutIndice({ indice, onAjouter }) {
   // recup song
   const [open, setOpen] = useState(false);
   const audioRef = useRef(null);
+  const [nePassePas, setnePassePas] = useState(false);
 
   const handleImageError = () => {
     console.error(`Erreur de chargement de l'image : ${indice.picture}`);
@@ -16,28 +17,58 @@ function AjoutIndice({ indice, onAjouter }) {
   const openDoor = () => {
     switch (localStorage.getItem("currentStage")) {
       case "/niveau1":
-        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 1)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 1) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau2":
-        if (JSON.parse(localStorage.getItem("inventaire"))[1].id === 100)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 100) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau3":
-        if (JSON.parse(localStorage.getItem("inventaire"))[2].id === 200)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 200) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau4":
-        if (JSON.parse(localStorage.getItem("inventaire"))[3].id === 300)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 300) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       case "/niveau5":
-        if (JSON.parse(localStorage.getItem("inventaire"))[4].id === 400)
+        if (JSON.parse(localStorage.getItem("inventaire"))[0].id === 400) {
           setOpen(true);
+        } else {
+          setnePassePas(true);
+          setTimeout(() => {
+            setnePassePas(false);
+          }, 5000);
+        }
         break;
 
       default:
@@ -85,9 +116,14 @@ function AjoutIndice({ indice, onAjouter }) {
         }}
         onClick={
           indice.name === "cadenas"
-            ? () => openDoor()
+            ? () => {
+                openDoor();
+                if (nePassePas) {
+                  onAjouter(indice);
+                }
+              }
             : () => {
-                onAjouter(indice); // if click play song
+                onAjouter(indice);
                 playSound(issou);
               }
         }

@@ -3,20 +3,21 @@ import Inventaire from "../../../components/Inventaire";
 import AjoutIndice from "../../Niveau1/components/AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau2.scss";
-import BulleNaration2 from "../../BulleNaration/component/BulleNaration2";
+import BulleNaration from "../../BulleNaration/component/BulleNaration";
 import HelpBtn from "../../../components/Help/HelpBtn";
-// import SousTitres from "../../../components/SousTitres";
 import SousTitres from "../../../components/SousTitres";
 
 function Niveau2() {
   const [inventaire, setInventaire] = useState([]);
   const [indicesAffiches, setIndicesAffiches] = useState([]);
   const [subtitles, setSubtitles] = useState("");
-  const [sousTitre, setSousTitre] = useState();
+  const [sousTitre, setSousTitre] = useState(false);
+  const [checkedItems, setCheckedItems] = useState({});
+  const [blurredIndices, setBlurredIndices] = useState([]);
+  const [blurredItems, setBlurredItems] = useState([]);
 
   useEffect(() => {
     const savedInventaire = localStorage.getItem("inventaire");
-
     let inventaireInitial = [];
     if (savedInventaire) {
       inventaireInitial = JSON.parse(savedInventaire);
@@ -30,15 +31,55 @@ function Niveau2() {
           (indice) => !inventaireInitial.some((item) => item.id === indice.id)
         );
         setIndicesAffiches(indicesFiltres);
+
+        const initialCheckedItems = {};
+        data.forEach((item) => {
+          if (item.indice) {
+            initialCheckedItems[item.name] = false;
+          }
+        });
+        setCheckedItems(initialCheckedItems);
+
+        const initialBlurredIndices = data
+          .filter((item) => item.indice)
+          .map((item) => item.name);
+        setBlurredIndices(initialBlurredIndices);
+        const initialBlurredItems = data
+          .filter((item) => item.inventory)
+          .map((item) => item.name);
+        setBlurredItems(initialBlurredItems);
       })
       .catch((error) => {
         console.error("Erreur lors du chargement des données:", error);
       });
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBlurredIndices((prev) => {
+        const updated = [...prev];
+        if (updated.length > 0) updated.shift();
+        return updated;
+      });
+    }, 60000);
+
+    return () => clearInterval(timer);
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBlurredItems((prev) => {
+        const updated = [...prev];
+        if (updated.length > 0) updated.shift();
+        return updated;
+      });
+    }, 300000);
+
+    return () => clearInterval(timer);
+  });
+
   const ajouterAuInventaire = (indice) => {
     if (indice.inventory && !inventaire.find((item) => item.id === indice.id)) {
-      const nouvelInventaire = [...inventaire, indice];
+      const nouvelInventaire = [indice, ...inventaire];
       const nouveauxIndicesAffiches = indicesAffiches.filter(
         (item) => item.id !== indice.id
       );
@@ -65,9 +106,16 @@ function Niveau2() {
     }
   };
 
+  const handleIndiceClick = (indiceName) => {
+    setCheckedItems((prevItems) => ({
+      ...prevItems,
+      [indiceName]: true,
+    }));
+  };
+
   return (
     <div className="background-container2">
-      <BulleNaration2 />
+      <BulleNaration />
       {indicesAffiches.map((indice) => (
         <AjoutIndice
           key={indice.id}
@@ -78,7 +126,13 @@ function Niveau2() {
       <div className="nav">
         <div className="buttons">
           <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
-          <HelpBtn />
+          <HelpBtn
+            niveau={2}
+            checkedItems={checkedItems}
+            handleIndiceClick={handleIndiceClick}
+            blurredIndices={blurredIndices}
+            blurredItems={blurredItems}
+          />
         </div>
         {sousTitre && <SousTitres subtitles={subtitles} />}
         <Inventaire items={inventaire} onOuvrir={ouvrirSplineUrl} />
