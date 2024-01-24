@@ -4,7 +4,13 @@ import "./HelpBtn.scss";
 import imgHelp from "./assets/imgHelp.png";
 import ModalHelp from "../ModalHelp";
 
-function HelpBtn({ niveau, checkedItems, handleIndiceClick, blurredIndices }) {
+function HelpBtn({
+  niveau,
+  checkedItems,
+  handleIndiceClick,
+  blurredIndices,
+  blurredItems,
+}) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -30,6 +36,7 @@ function HelpBtn({ niveau, checkedItems, handleIndiceClick, blurredIndices }) {
           checkedItems={checkedItems}
           handleIndiceClick={handleIndiceClick}
           blurredIndices={blurredIndices}
+          blurredItems={blurredItems}
         />
       )}
     </div>

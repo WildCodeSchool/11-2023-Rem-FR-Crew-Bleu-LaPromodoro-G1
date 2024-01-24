@@ -14,6 +14,7 @@ function Niveau1() {
   const [sousTitre, setSousTitre] = useState(false);
   const [checkedItems, setCheckedItems] = useState({});
   const [blurredIndices, setBlurredIndices] = useState([]);
+  const [blurredItems, setBlurredItems] = useState([]);
 
   useEffect(() => {
     const savedInventaire = localStorage.getItem("inventaire");
@@ -43,6 +44,10 @@ function Niveau1() {
           .filter((item) => item.indice)
           .map((item) => item.name);
         setBlurredIndices(initialBlurredIndices);
+        const initialBlurredItems = data
+          .filter((item) => item.inventory)
+          .map((item) => item.name);
+        setBlurredItems(initialBlurredItems);
       })
       .catch((error) => {
         console.error("Erreur lors du chargement des données:", error);
@@ -56,10 +61,21 @@ function Niveau1() {
         if (updated.length > 0) updated.shift();
         return updated;
       });
-    }, 60000); // 60000 ms = 1 minute
+    }, 60000);
 
     return () => clearInterval(timer);
   }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBlurredItems((prev) => {
+        const updated = [...prev];
+        if (updated.length > 0) updated.shift();
+        return updated;
+      });
+    }, 300000);
+
+    return () => clearInterval(timer);
+  });
 
   const ajouterAuInventaire = (indice) => {
     if (indice.inventory && !inventaire.find((item) => item.id === indice.id)) {
@@ -115,6 +131,7 @@ function Niveau1() {
             checkedItems={checkedItems}
             handleIndiceClick={handleIndiceClick}
             blurredIndices={blurredIndices}
+            blurredItems={blurredItems}
           />
         </div>
         {sousTitre && <SousTitres subtitles={subtitles} />}

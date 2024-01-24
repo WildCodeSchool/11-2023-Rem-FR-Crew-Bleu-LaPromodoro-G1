@@ -11,6 +11,7 @@ export default function Modal({
   checkedItems,
   handleIndiceClick,
   blurredIndices,
+  blurredItems,
 }) {
   const handleContentClick = (element) => {
     element.stopPropagation();
@@ -32,7 +33,7 @@ export default function Modal({
             handleIndiceClick={handleIndiceClick}
             blurredIndices={blurredIndices}
           />
-          <ObjectsRamasses />
+          <ObjectsRamasses niveau={niveau} blurredItems={blurredItems} />
         </div>
       </div>
     </div>

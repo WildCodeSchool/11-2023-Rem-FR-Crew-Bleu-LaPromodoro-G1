@@ -3,7 +3,7 @@ import Inventaire from "../../../components/Inventaire";
 import AjoutIndice from "../../Niveau1/components/AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau4.scss";
-import BulleNaration4 from "../../BulleNaration/component/BulleNaration4";
+import BulleNaration from "../../BulleNaration/component/BulleNaration";
 import HelpBtn from "../../../components/Help/HelpBtn";
 import SousTitres from "../../../components/SousTitres";
 
@@ -14,6 +14,7 @@ function Niveau4() {
   const [sousTitre, setSousTitre] = useState(false);
   const [checkedItems, setCheckedItems] = useState({});
   const [blurredIndices, setBlurredIndices] = useState([]);
+  const [blurredItems, setBlurredItems] = useState([]);
 
   useEffect(() => {
     const savedInventaire = localStorage.getItem("inventaire");
@@ -43,6 +44,10 @@ function Niveau4() {
           .filter((item) => item.indice)
           .map((item) => item.name);
         setBlurredIndices(initialBlurredIndices);
+        const initialBlurredItems = data
+          .filter((item) => item.inventory)
+          .map((item) => item.name);
+        setBlurredItems(initialBlurredItems);
       })
       .catch((error) => {
         console.error("Erreur lors du chargement des données:", error);
@@ -56,10 +61,21 @@ function Niveau4() {
         if (updated.length > 0) updated.shift();
         return updated;
       });
-    }, 6000); // 60000 ms = 1 minute
+    }, 60000);
 
     return () => clearInterval(timer);
   }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBlurredItems((prev) => {
+        const updated = [...prev];
+        if (updated.length > 0) updated.shift();
+        return updated;
+      });
+    }, 300000);
+
+    return () => clearInterval(timer);
+  });
 
   const ajouterAuInventaire = (indice) => {
     if (indice.inventory && !inventaire.find((item) => item.id === indice.id)) {
@@ -99,7 +115,7 @@ function Niveau4() {
 
   return (
     <div className="background-container4">
-      <BulleNaration4 />
+      <BulleNaration />
       {indicesAffiches.map((indice) => (
         <AjoutIndice
           key={indice.id}
@@ -111,10 +127,11 @@ function Niveau4() {
         <div className="buttons">
           <Settings sousTitre={sousTitre} setSousTitre={setSousTitre} />
           <HelpBtn
-            niveau={1}
+            niveau={4}
             checkedItems={checkedItems}
             handleIndiceClick={handleIndiceClick}
             blurredIndices={blurredIndices}
+            blurredItems={blurredItems}
           />
         </div>
         {sousTitre && <SousTitres subtitles={subtitles} />}
