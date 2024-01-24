@@ -38,7 +38,7 @@ function Niveau3() {
 
   const ajouterAuInventaire = (indice) => {
     if (indice.inventory && !inventaire.find((item) => item.id === indice.id)) {
-      const nouvelInventaire = [...inventaire, indice];
+      const nouvelInventaire = [indice, ...inventaire];
       const nouveauxIndicesAffiches = indicesAffiches.filter(
         (item) => item.id !== indice.id
       );

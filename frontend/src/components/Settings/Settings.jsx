@@ -23,8 +23,6 @@ function Settings({ sousTitre, setSousTitre }) {
     localStorage.setItem("sousTitres", JSON.stringify(newSousTitreState));
   };
 
-  console.warn("sousTitre:", sousTitre, "setSousTitre:", setSousTitre);
-
   return (
     <div id="parametres">
       <img
