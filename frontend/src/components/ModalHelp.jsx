@@ -5,7 +5,14 @@ import Remove from "../assets/remove.png";
 import ListeIndice from "./ListeIndice";
 import ObjectsRamasses from "./ObjectsRamasses";
 
-export default function Modal({ onClose }) {
+export default function Modal({
+  onClose,
+  niveau,
+  checkedItems,
+  handleIndiceClick,
+  blurredIndices,
+  blurredItems,
+}) {
   const handleContentClick = (element) => {
     element.stopPropagation();
   };
@@ -20,8 +27,13 @@ export default function Modal({ onClose }) {
           onClick={onClose}
         />
         <div className="modal-content-help" onClick={handleContentClick}>
-          <ListeIndice />
-          <ObjectsRamasses />
+          <ListeIndice
+            niveau={niveau}
+            checkedItems={checkedItems}
+            handleIndiceClick={handleIndiceClick}
+            blurredIndices={blurredIndices}
+          />
+          <ObjectsRamasses niveau={niveau} blurredItems={blurredItems} />
         </div>
       </div>
     </div>
