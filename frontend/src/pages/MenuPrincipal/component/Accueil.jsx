@@ -40,7 +40,20 @@ function Accueil() {
         </div>
         <div id="launcher">
           <Link to="/niveau1">
-            <button type="button" onClick={() => localStorage.clear()}>
+            <button
+              type="button"
+              onClick={() => {
+                localStorage.clear();
+                localStorage.setItem(
+                  "inventaire",
+                  JSON.stringify([
+                    {
+                      id: 0,
+                    },
+                  ])
+                );
+              }}
+            >
               Nouvelle partie
             </button>
           </Link>
