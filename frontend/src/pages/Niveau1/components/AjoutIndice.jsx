@@ -110,7 +110,6 @@ function AjoutIndice({ indice, onAjouter }) {
           currentStage={currentStage}
         />
       )}
-      ;
     </>
   );
 }
