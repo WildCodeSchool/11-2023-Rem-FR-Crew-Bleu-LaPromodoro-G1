@@ -1,10 +1,13 @@
-import { React, useState } from "react";
+import { useRef, useState } from "react";
 import PropTypes from "prop-types"; // Importer PropTypes
 import { useLocation } from "react-router-dom";
 import PasserSalle from "../../../components/PassageDeSalle/PasserSalle";
+import issou from "../../../assets/issou.mp3";
 
 function AjoutIndice({ indice, onAjouter }) {
+  // recup song
   const [open, setOpen] = useState(false);
+  const audioRef = useRef(null);
   const [nePassePas, setnePassePas] = useState(false);
 
   const handleImageError = () => {
@@ -73,7 +76,26 @@ function AjoutIndice({ indice, onAjouter }) {
         break;
     }
   };
+  const playSound = () => {
+    console.info(
+      "Tentative de lecture de l'audio",
+      // eslint-disable-next-line react/prop-types
+      `http://localhost:5000${indice.sound}`
+    );
+    // eslint-disable-next-line react/prop-types
+    audioRef.current = new Audio(`http://localhost:5000/${indice.sound}`);
 
+    if (audioRef.current) {
+      audioRef.current
+        .play()
+        .then(() => {
+          console.warn("Audio en lecture");
+        })
+        .catch((e) => {
+          console.error("Erreur lors de la lecture de l'audio:", e);
+        });
+    }
+  };
   const currentStage = useLocation().pathname;
   localStorage.setItem("currentStage", currentStage);
 
@@ -81,6 +103,7 @@ function AjoutIndice({ indice, onAjouter }) {
     <>
       <img
         className="ajout"
+        ref={audioRef}
         src={`http://localhost:5000${indice.picture}`}
         alt={indice.name}
         style={{
@@ -99,7 +122,10 @@ function AjoutIndice({ indice, onAjouter }) {
                   onAjouter(indice);
                 }
               }
-            : () => onAjouter(indice)
+            : () => {
+                onAjouter(indice);
+                playSound(issou);
+              }
         }
         onError={handleImageError}
       />
