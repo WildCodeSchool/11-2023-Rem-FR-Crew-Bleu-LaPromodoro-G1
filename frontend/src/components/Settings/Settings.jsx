@@ -4,7 +4,7 @@ import "./Settings.scss";
 
 function Settings({ sousTitre, setSousTitre }) {
   const [active, setActive] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   // Chargement de l'état initial de sousTitre du localStorage
   useEffect(() => {
@@ -15,12 +15,19 @@ function Settings({ sousTitre, setSousTitre }) {
   }, [setSousTitre]);
 
   const toggleActive = () => setActive(!active);
-  const toggleMuted = () => setMuted(!muted);
+  const toggleMuted = () => {
+    setMuted(!muted);
+    localStorage.setItem("muted", JSON.stringify(!muted));
+  };
 
   const toggleSousTitre = () => {
     const newSousTitreState = !sousTitre;
     setSousTitre(newSousTitreState);
     localStorage.setItem("sousTitres", JSON.stringify(newSousTitreState));
+  };
+
+  const volumeChange = (volume) => {
+    console.info(volume.target.value);
   };
 
   return (
@@ -37,7 +44,14 @@ function Settings({ sousTitre, setSousTitre }) {
             src="src/components/Settings/assets/High.png"
             alt="volume fort"
           />
-          <input type="range" name="volume" id="volume" />
+          <input
+            type="range"
+            name="volume"
+            id="volume"
+            min="1"
+            max="10"
+            onChange={volumeChange}
+          />
           <img
             src="src/components/Settings/assets/Low.png"
             alt="volume faible"

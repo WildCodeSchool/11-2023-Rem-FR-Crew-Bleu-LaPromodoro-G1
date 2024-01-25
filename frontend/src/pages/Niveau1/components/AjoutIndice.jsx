@@ -124,7 +124,9 @@ function AjoutIndice({ indice, onAjouter }) {
               }
             : () => {
                 onAjouter(indice);
-                playSound(issou);
+                if (!JSON.parse(localStorage.getItem("muted"))) {
+                  playSound(issou);
+                }
               }
         }
         onError={handleImageError}
