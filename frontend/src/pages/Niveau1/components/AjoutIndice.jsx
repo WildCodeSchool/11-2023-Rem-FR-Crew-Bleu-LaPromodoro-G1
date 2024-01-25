@@ -83,7 +83,9 @@ function AjoutIndice({ indice, onAjouter }) {
       `http://localhost:5000${indice.sound}`
     );
     // eslint-disable-next-line react/prop-types
-    audioRef.current = new Audio(`http://localhost:5000/${indice.sound}`);
+    if (JSON.parse(localStorage.getItem("muted"))) {
+      audioRef.current = new Audio(`http://localhost:5000/${indice.sound}`);
+    }
 
     if (audioRef.current) {
       audioRef.current
@@ -124,9 +126,7 @@ function AjoutIndice({ indice, onAjouter }) {
               }
             : () => {
                 onAjouter(indice);
-                if (JSON.parse(localStorage.getItem("muted"))) {
-                  playSound(issou);
-                }
+                playSound(issou);
               }
         }
         onError={handleImageError}
@@ -152,6 +152,7 @@ AjoutIndice.propTypes = {
     rotation: PropTypes.number.isRequired,
     largeur: PropTypes.number.isRequired,
     code: PropTypes.number.isRequired,
+    sound: PropTypes.string.isRequired,
   }).isRequired,
   onAjouter: PropTypes.func.isRequired,
 };
