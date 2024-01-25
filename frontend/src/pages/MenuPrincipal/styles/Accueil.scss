@@ -59,6 +59,9 @@
     }
   }
 }
+section#home {
+  height: 120svh;
+}
 
 #home {
   background-color: var(--bg-accueil);
@@ -70,7 +73,6 @@
   justify-content: space-evenly;
 
   height: 100vh;
-
   .para {
     display: flex;
     flex-direction: column;
@@ -78,13 +80,16 @@
   }
 
   h2 {
+    margin-top: 2%;
     font-size: var(--font-size-title);
     color: var(--bg-button);
+    text-shadow: rgb(255, 255, 255) 1px 0 10px;
   }
 
   p {
     font-size: 1.3em;
     color: var(--font-color-text);
+    text-align: justify;
   }
 
   #launcher {
@@ -137,5 +142,12 @@
       animation: none;
       opacity: 1;
     }
+  }
+  // div.allLinks {
+  //   padding-bottom: 3svh;
+  // }
+  .allLinks {
+    display: flex;
+    justify-content: space-around;
   }
 }

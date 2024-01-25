@@ -91,9 +91,140 @@ function Accueil() {
             significative dans notre parcours. Nous sommes excités de continuer
             à apprendre, à créer et à innover dans le domaine du développement
             de jeux. Nous espérons que vous apprécierez "Casino777" autant que
-            nous avons aimé le créer. Bon jeu à tous ! Cordialement, L'Équipe
-            des Développeur.
+            nous avons aimé le créer. <br />
+            <br />
+            Bon jeu à tous ! <br />
+            <br /> Cordialement, L'Équipe des Développeur.
           </p>
+          {/* ALL DEVS LINKS */}
+          <div className="allLinks">
+            {/* MATTEO LINKS */}
+            <div className="links">
+              {/* GITHUB */}
+              <a
+                href="https://github.com/mdonatelli1"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                  alt="github-logo"
+                />
+              </a>
+              {/* LINKEDIN */}
+              <a
+                href="https://www.linkedin.com/in/matteodonatelli/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                  alt="linkedin-logo"
+                />
+              </a>
+            </div>
+            {/* HAMIDOU LINKS */}
+            <div className="links">
+              {/* GITHUB */}
+              <a
+                href="https://github.com/HamIIdou"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                  alt="github-logo"
+                />
+              </a>
+              {/* LINKEDIN */}
+              <a
+                href="https://www.linkedin.com/in/hamidou-sall-mamadou-390b4118b/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                  alt="linkedin-logo"
+                />
+              </a>
+            </div>
+            {/* MAEVA LINKS */}
+            <div className="links">
+              {/* GITHUB */}
+              <a
+                href="https://github.com/maevafauvel"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                  alt="github-logo"
+                />
+              </a>
+              {/* LINKEDIN */}
+              <a
+                href="https://www.linkedin.com/in/maevafauvel/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                  alt="linkedin-logo"
+                />
+              </a>
+            </div>
+            {/* BEGOT LINKS */}
+            <div className="links">
+              {/* GITHUB */}
+              <a
+                href="https://github.com/Gwenaelbegot"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                  alt="github-logo"
+                />
+              </a>
+              {/* LINKEDIN */}
+              <a
+                href="https://www.linkedin.com/in/begot-gwenael-04aba82a4/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                  alt="linkedin-logo"
+                />
+              </a>
+            </div>
+            {/* OCEANE LINKS */}
+            <div className="links">
+              {/* GITHUB */}
+              <a
+                href="https://github.com/ThisIsHowVillainsAreMade"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                  alt="github-logo"
+                />
+              </a>
+              {/* LINKEDIN */}
+              <a
+                href="https://www.linkedin.com/in/oaiw/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                  alt="linkedin-logo"
+                />
+              </a>
+            </div>
+          </div>
+          {/* LINKS END */}
         </div>
         <div id="launcher">
           <Link to="/niveau1">
