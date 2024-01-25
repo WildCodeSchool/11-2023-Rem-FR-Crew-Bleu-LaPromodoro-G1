@@ -63,7 +63,7 @@
 #home {
   background-color: var(--bg-accueil);
 
-  padding: 50px 100px;
+  padding: 0px 100px;
 
   display: flex;
   flex-direction: column;
@@ -74,16 +74,16 @@
   .para {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
   }
 
   h2 {
     font-size: var(--font-size-title);
-    color: var(--font-color-title);
+    color: var(--font-666-color);
   }
 
   p {
-    font-size: var(--font-size-text);
+    font-size: 1.3em;
     color: var(--font-color-text);
   }
 

@@ -23,19 +23,76 @@ function Accueil() {
         <div className="para">
           <h2>Description</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum,
-            consequatur! Repudiandae, quibusdam. Quod inventore eveniet
-            laudantium, sapiente esse ratione fugiat sunt expedita. Non unde
-            dicta, consequuntur harum facilis error odio.
+            Embarquez dans une aventure solo unique avec le jeu d'évasion en
+            ligne "Casino777". Plus qu'un simple jeu, c'est un voyage dans un
+            monde énigmatique où chaque indice et chaque énigme résolue vous
+            rapproche de la sortie de ce casino mystérieux. Ici, les jeux de
+            hasard se transforment en défis intellectuels captivants, où chaque
+            pièce révèle un fragment caché de l'histoire de Gerad Hadd, notre
+            protagoniste principal.
+            <br />
+            <br />
+            Dans cette quête solitaire, la ligne entre réalité et fiction
+            s'estompe, vous immergeant dans une expérience où vos émotions
+            oscillent entre le réel et l'imaginaire. Faites appel à votre
+            ingéniosité et votre perspicacité pour déjouer les énigmes du
+            "Casino777" et découvrir les secrets de son passé.
+            <br />
+            <br />
+            Ce n'est pas seulement un escape game, c'est une exploration
+            personnelle où les enjeux sont bien plus profonds qu'une simple
+            évasion. Êtes-vous prêt à relever le défi, à jouer avec le destin et
+            à découvrir les vérités cachées dans ce labyrinthe d'énigmes ?<br />
+            Votre aventure commence maintenant dans le "Casino777", où chaque
+            décision compte et chaque indice est une porte vers des révélations
+            plus intrigantes les unes que les autres.
           </p>
         </div>
         <div className="para">
           <h2>Informations</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            modi aut atque, molestiae delectus vel ad fugiat eligendi fugit
-            nesciunt, quod omnis quibusdam, neque repellendus quis? Omnis
-            tempora suscipit ex.
+            Nous sommes une équipe d'étudiants enthousiastes de la Wild Code
+            School, et nous voulons partager avec vous notre aventure
+            passionnante dans le développement de "Casino777", notre projet de
+            fin d'études.
+            <br />
+            <br />
+            Le processus de développement a été un véritable parcours
+            d'apprentissage. Chacun d'entre nous apportait des compétences et
+            des perspectives uniques, allant du codage à la conception
+            graphique, en passant par le storytelling. Nous avons été guidés par
+            nos mentors à la Wild Code School, dont l'expertise et les conseils
+            ont été cruciaux pour transformer notre vision en réalité.
+            <br />
+            <br />
+            Nous avons rencontré des défis, notamment en matière de conception
+            d'énigmes qui soient à la fois intrigantes et faisables, et en
+            assurant que l'interface utilisateur soit intuitive mais engageante.
+            Chaque obstacle a été une opportunité d'apprendre et de grandir en
+            tant que développeurs et concepteurs.
+            <br />
+            <br />
+            "Casino777" est plus qu'un simple jeu pour nous. C'est le résultat
+            de notre passion, de notre travail d'équipe et de notre engagement à
+            créer quelque chose de vraiment spécial. Nous sommes fiers de ce que
+            nous avons accompli et sommes impatients de voir comment les joueurs
+            vont interagir avec notre création.
+            <br />
+            <br />
+            Nous tenons à remercier la Wild Code School pour l'opportunité et le
+            soutien, ainsi que tous ceux qui ont joué, testé et donné des
+            retours sur "Casino777". Mention spéciale à notre mentor Abdou, qui
+            s'est porté volontaire pour apporter sa voix dans les doublages de
+            Gerard Hadd. Votre enthousiasme et vos critiques constructives ont
+            été essentiels pour affiner notre jeu.
+            <br />
+            <br />
+            En tant que jeunes développeurs, ce projet a été une étape
+            significative dans notre parcours. Nous sommes excités de continuer
+            à apprendre, à créer et à innover dans le domaine du développement
+            de jeux. Nous espérons que vous apprécierez "Casino777" autant que
+            nous avons aimé le créer. Bon jeu à tous ! Cordialement, L'Équipe
+            des Développeur.
           </p>
         </div>
         <div id="launcher">
@@ -67,6 +124,7 @@ function Accueil() {
           >
             <button type="button">Continuer</button>
           </Link>
+          {/* <img src="/src/assets/github.png" alt="logoGit" /> */}
         </div>
       </section>
     </section>

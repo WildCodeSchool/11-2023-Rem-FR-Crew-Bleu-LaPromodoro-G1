@@ -12,10 +12,12 @@
 
   background-color: var(--background-text);
 
-  height: 150px;
-  width: 300px;
+  min-height: 150px;
+  min-width: 300px;
 
   border-radius: 20px;
+
+  padding-bottom: 20px;
 
   p {
     color: var(--font-color-text);
@@ -36,5 +38,10 @@
     color: var(--font-color-text);
 
     cursor: pointer;
+  }
+
+  img {
+    padding: 20px;
+    padding-top: 40px;
   }
 }

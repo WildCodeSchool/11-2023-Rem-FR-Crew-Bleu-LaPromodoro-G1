@@ -8,6 +8,7 @@ function AjoutIndice({ indice, onAjouter }) {
   const [open, setOpen] = useState(false);
   const audioRef = useRef(null);
   const [nePassePas, setnePassePas] = useState(false);
+  const [affDecryptage, setAffDecryptage] = useState(false);
 
   const handleImageError = () => {
     console.error(`Erreur de chargement de l'image : ${indice.picture}`);
@@ -102,6 +103,20 @@ function AjoutIndice({ indice, onAjouter }) {
 
   return (
     <>
+      {affDecryptage && (
+        <img
+          alt={indice.name}
+          onClick={() => setAffDecryptage(false)}
+          src={`http://localhost:5000${indice.imgSrc}`}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1,
+          }}
+        />
+      )}
       <img
         className="ajout"
         ref={audioRef}
@@ -124,6 +139,9 @@ function AjoutIndice({ indice, onAjouter }) {
                 }
               }
             : () => {
+                if (indice.decryptage) {
+                  setAffDecryptage(!affDecryptage);
+                }
                 onAjouter(indice);
                 playSound();
               }
@@ -132,6 +150,7 @@ function AjoutIndice({ indice, onAjouter }) {
       />
       {open && (
         <PasserSalle
+          dechiffrage={indice.dechiffrage}
           secretCode={indice.code}
           setOpen={setOpen}
           currentStage={currentStage}
@@ -152,6 +171,9 @@ AjoutIndice.propTypes = {
     largeur: PropTypes.number.isRequired,
     code: PropTypes.number.isRequired,
     sound: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string.isRequired,
+    decryptage: PropTypes.string.isRequired,
+    dechiffrage: PropTypes.string.isRequired,
   }).isRequired,
   onAjouter: PropTypes.func.isRequired,
 };
