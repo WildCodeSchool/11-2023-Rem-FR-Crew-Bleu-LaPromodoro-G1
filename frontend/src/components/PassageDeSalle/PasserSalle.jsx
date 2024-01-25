@@ -3,7 +3,7 @@ import PropTypes from "prop-types"; // Importer PropTypes
 import { useState } from "react";
 import "./PasserSalle.scss";
 
-function PasserSalle({ secretCode, setOpen, currentStage }) {
+function PasserSalle({ secretCode, setOpen, currentStage, dechiffrage }) {
   const currentStageTab = currentStage.split("");
   const stage = currentStageTab.pop("");
   currentStageTab.push(parseInt(stage, 10) + 1);
@@ -169,6 +169,11 @@ function PasserSalle({ secretCode, setOpen, currentStage }) {
 
   return (
     <div id="passer-salle">
+      {localStorage.getItem("currentStage") !== "/niveau3" ? (
+        <p>{dechiffrage}</p>
+      ) : (
+        <img src={`http://localhost:5000${dechiffrage}`} alt="A dechiffrer" />
+      )}
       <input onChange={codeRight} type="text" value={password} />
       {unlock ? (
         <Link to={nextStage === "/niveau6" ? "/pagefinale" : nextStage}>
@@ -189,6 +194,7 @@ PasserSalle.propTypes = {
   secretCode: PropTypes.string.isRequired,
   setOpen: PropTypes.bool.isRequired,
   currentStage: PropTypes.string.isRequired,
+  dechiffrage: PropTypes.string.isRequired,
 };
 
 export default PasserSalle;
