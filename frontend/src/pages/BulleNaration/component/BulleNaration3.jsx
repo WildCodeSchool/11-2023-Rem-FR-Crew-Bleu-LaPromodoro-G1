@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable dot-notation */
+/* eslint-disable prefer-template */
+/* eslint-disable no-restricted-syntax */
+import React, { useState, useEffect, useRef } from "react";
 import "./BulleNaration.scss";
 import "./BulleNaration3.scss";
 import closeIcon from "../assets/btn-text.png";
@@ -7,9 +10,45 @@ import "../../../App.scss";
 function BulleNaration() {
   const [modalNar, setModalNar] = useState(true);
   const [currentText, setCurrentText] = useState(1);
+  const [narration, setNarration] = useState([]);
+  const audioRef = useRef(null);
 
   const toggleModal = () => {
     setModalNar((prevModalNar) => !prevModalNar);
+  };
+
+  const getData = () => {
+    fetch("http://localhost:5000/narration/")
+      .then((res) => res.json())
+      .then((data) => console.log(data) || setNarration(data));
+  };
+
+  const playSound = () => {
+    const urlSound = "sound" + currentText;
+    console.info(
+      "Tentative de lecture de l'audio",
+      // eslint-disable-next-line react/prop-types
+      narration[0]?.["sound1"],
+      `http://localhost:5000/${narration[2]?.[urlSound]}`
+    );
+    // eslint-disable-next-line react/prop-types
+    audioRef.current = new Audio(
+      `http://localhost:5000/${narration[2]?.[urlSound]}`
+    );
+
+    if (audioRef.current) {
+      if (JSON.parse(localStorage.getItem("muted"))) {
+        console.log("yolo");
+        audioRef.current
+          .play()
+          .then(() => {
+            console.warn("Audio en lecture");
+          })
+          .catch((e) => {
+            console.error("Erreur lors de la lecture de l'audio:", e);
+          });
+      }
+    }
   };
 
   useEffect(() => {
@@ -28,6 +67,10 @@ function BulleNaration() {
       }
     };
   }, [currentText]);
+  useEffect(() => {
+    console.log("poulet");
+    getData();
+  }, []);
 
   return (
     <div>
@@ -43,27 +86,44 @@ function BulleNaration() {
                 onClick={toggleModal}
               />
               {currentText === 1 && (
-                <p className={`text${currentText}`}>
-                  “Mais ce n'est pas possible !!”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Mais ce n'est pas possible !!”
+                  </p>
+                </>
               )}
               {currentText === 2 && (
-                <p className={`text${currentText}`}>
-                  “Il y en a combien de ces foutues salles-là ?!”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Il y en a combien de ces foutues salles-là ?!”
+                  </p>
+                </>
               )}
               {currentText === 3 && (
-                <p className={`text${currentText}`}>
-                  “Et j’imagine qu’elle est verrouillée”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Et j’imagine qu’elle est verrouillée”
+                  </p>
+                </>
               )}
               {currentText === 4 && (
-                <p className={`text${currentText}`}>
-                  “:souffle: En plus, elle est lugubre celle-ci”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “:souffle: En plus, elle est lugubre celle-ci”
+                  </p>
+                </>
               )}
               {currentText === 5 && (
-                <p className={`text${currentText}`}>"Aller, courage Gégé !"</p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "Aller, courage Gégé !"
+                  </p>
+                </>
               )}
             </div>
           </div>

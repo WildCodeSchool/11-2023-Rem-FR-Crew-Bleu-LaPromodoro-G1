@@ -12,7 +12,7 @@ function Accueil() {
             <span className="to-six">666</span>
           </span>
         </h1>
-        <a className="scroll-down" href="#home">
+        <a className="scroll-down" href="#buttonForScroll">
           <img
             src="src\pages\MenuPrincipal\assets\Scroll_bas.png"
             alt="scroll-button"
@@ -21,7 +21,7 @@ function Accueil() {
       </section>
       <section id="home">
         <div className="para">
-          <h2>Description</h2>
+          <h2>DESCRIPTION</h2>
           <p>
             Embarquez dans une aventure solo unique avec le jeu d'évasion en
             ligne "Casino777". Plus qu'un simple jeu, c'est un voyage dans un
@@ -49,7 +49,7 @@ function Accueil() {
           </p>
         </div>
         <div className="para">
-          <h2>Informations</h2>
+          <h2>INFORMATIONS</h2>
           <p>
             Nous sommes une équipe d'étudiants enthousiastes de la Wild Code
             School, et nous voulons partager avec vous notre aventure
@@ -91,16 +91,165 @@ function Accueil() {
             significative dans notre parcours. Nous sommes excités de continuer
             à apprendre, à créer et à innover dans le domaine du développement
             de jeux. Nous espérons que vous apprécierez "Casino777" autant que
-            nous avons aimé le créer. Bon jeu à tous ! Cordialement, L'Équipe
-            des Développeur.
+            nous avons aimé le créer. <br />
+            <br />
+            Bon jeu à tous ! <br />
+            <br /> Cordialement, <br />
+            <br /> L'Équipe des Développeur.
           </p>
+          {/* ALL DEVS LINKS */}
+          <div className="allLinks">
+            <div className="linksContainer">
+              {/* MATTEO LINKS */}
+              <div className="links">
+                {/* GITHUB */}
+                <a
+                  href="https://github.com/mdonatelli1"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                    alt="github-logo"
+                  />
+                </a>
+                {/* LINKEDIN */}
+                <a
+                  href="https://www.linkedin.com/in/matteodonatelli/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                    alt="linkedin-logo"
+                  />
+                </a>
+              </div>
+              <p>Mattéo</p>
+            </div>
+            {/* HAMIDOU LINKS */}
+            <div className="linksContainer">
+              <div className="links">
+                {/* GITHUB */}
+                <a
+                  href="https://github.com/HamIIdou"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                    alt="github-logo"
+                  />
+                </a>
+                {/* LINKEDIN */}
+                <a
+                  href="https://www.linkedin.com/in/hamidou-sall-mamadou-390b4118b/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                    alt="linkedin-logo"
+                  />
+                </a>
+              </div>
+              <p>Hamidou</p>
+            </div>
+            {/* MAEVA LINKS */}
+            <div className="linksContainer">
+              <div className="links">
+                {/* GITHUB */}
+                <a
+                  href="https://github.com/maevafauvel"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                    alt="github-logo"
+                  />
+                </a>
+                {/* LINKEDIN */}
+                <a
+                  href="https://www.linkedin.com/in/maevafauvel/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                    alt="linkedin-logo"
+                  />
+                </a>
+              </div>
+              <p>Maëva</p>
+            </div>
+            {/* BEGOT LINKS */}
+            <div className="linksContainer">
+              <div className="links">
+                {/* GITHUB */}
+                <a
+                  href="https://github.com/Gwenaelbegot"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                    alt="github-logo"
+                  />
+                </a>
+                {/* LINKEDIN */}
+                <a
+                  href="https://www.linkedin.com/in/begot-gwenael-04aba82a4/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                    alt="linkedin-logo"
+                  />
+                </a>
+              </div>
+              <p>Gwena</p>
+            </div>
+            {/* OCEANE LINKS */}
+            <div className="linksContainer">
+              <div className="links">
+                {/* GITHUB */}
+                <a
+                  href="https://github.com/ThisIsHowVillainsAreMade"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
+                    alt="github-logo"
+                  />
+                </a>
+                {/* LINKEDIN */}
+                <a
+                  href="https://www.linkedin.com/in/oaiw/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
+                    alt="linkedin-logo"
+                  />
+                </a>
+              </div>
+              <p>Océane</p>
+            </div>
+          </div>
+          {/* LINKS END */}
         </div>
         <div id="launcher">
           <Link to="/niveau1">
             <button
+              id="buttonForScroll"
               type="button"
               onClick={() => {
                 localStorage.clear();
+                localStorage.setItem("muted", true);
                 localStorage.setItem(
                   "inventaire",
                   JSON.stringify([

@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import PropTypes from "prop-types"; // Importer PropTypes
 import { useLocation } from "react-router-dom";
 import PasserSalle from "../../../components/PassageDeSalle/PasserSalle";
-import issou from "../../../assets/issou.mp3";
 
 function AjoutIndice({ indice, onAjouter }) {
   // recup song
@@ -144,7 +143,7 @@ function AjoutIndice({ indice, onAjouter }) {
                   setAffDecryptage(!affDecryptage);
                 }
                 onAjouter(indice);
-                playSound(issou);
+                playSound();
               }
         }
         onError={handleImageError}
