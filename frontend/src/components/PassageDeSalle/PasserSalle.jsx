@@ -101,6 +101,65 @@ function PasserSalle({ secretCode, setOpen, currentStage }) {
       } else {
         setPassword(code.target.value.toUpperCase());
       }
+    } else if (localStorage.getItem("currentStage") === "/niveau5") {
+      if (code.target.value.length === 11 || code.target.value.length === 12) {
+        if (
+          code.target.value.replaceAll(", ", "").toUpperCase() === secretCode
+        ) {
+          setUnlock(true);
+        } else {
+          setUnlock(false);
+        }
+      }
+      if (code.target.value.length > 13 || code.target.value.includes()) {
+        setPassword(password);
+      } else {
+        switch (code.target.value.length) {
+          case 2:
+            setPassword(
+              `${password}, ${code.target.value.charAt(1).toUpperCase()}`
+            );
+            break;
+          case 3:
+            setPassword(
+              code.target.value.slice(0, code.target.value.length - 2)
+            );
+            break;
+          case 5:
+            setPassword(
+              `${password}, ${code.target.value.charAt(4).toUpperCase()}`
+            );
+            break;
+          case 6:
+            setPassword(
+              code.target.value.slice(0, code.target.value.length - 2)
+            );
+            break;
+          case 8:
+            setPassword(
+              `${password}, ${code.target.value.charAt(7).toUpperCase()}`
+            );
+            break;
+          case 9:
+            setPassword(
+              code.target.value.slice(0, code.target.value.length - 2)
+            );
+            break;
+          case 11:
+            setPassword(
+              `${password}, ${code.target.value.charAt(10).toUpperCase()}`
+            );
+            break;
+          case 12:
+            setPassword(
+              code.target.value.slice(0, code.target.value.length - 2)
+            );
+            break;
+          default:
+            setPassword(code.target.value.toUpperCase());
+            break;
+        }
+      }
     }
   };
 
@@ -112,7 +171,9 @@ function PasserSalle({ secretCode, setOpen, currentStage }) {
     <div id="passer-salle">
       <input onChange={codeRight} type="text" value={password} />
       {unlock ? (
-        <Link to={nextStage}>Ouvrir la porte</Link>
+        <Link to={nextStage === "/niveau6" ? "/pagefinale" : nextStage}>
+          Ouvrir la porte
+        </Link>
       ) : (
         <p>Ouvrir la porte</p>
       )}
