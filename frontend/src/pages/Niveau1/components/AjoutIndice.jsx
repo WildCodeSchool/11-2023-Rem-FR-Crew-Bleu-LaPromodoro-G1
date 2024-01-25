@@ -86,14 +86,16 @@ function AjoutIndice({ indice, onAjouter }) {
     audioRef.current = new Audio(`http://localhost:5000/${indice.sound}`);
 
     if (audioRef.current) {
-      audioRef.current
-        .play()
-        .then(() => {
-          console.warn("Audio en lecture");
-        })
-        .catch((e) => {
-          console.error("Erreur lors de la lecture de l'audio:", e);
-        });
+      if (JSON.parse(localStorage.getItem("muted"))) {
+        audioRef.current
+          .play()
+          .then(() => {
+            console.warn("Audio en lecture");
+          })
+          .catch((e) => {
+            console.error("Erreur lors de la lecture de l'audio:", e);
+          });
+      }
     }
   };
   const currentStage = useLocation().pathname;
@@ -150,6 +152,7 @@ AjoutIndice.propTypes = {
     rotation: PropTypes.number.isRequired,
     largeur: PropTypes.number.isRequired,
     code: PropTypes.number.isRequired,
+    sound: PropTypes.string.isRequired,
   }).isRequired,
   onAjouter: PropTypes.func.isRequired,
 };
