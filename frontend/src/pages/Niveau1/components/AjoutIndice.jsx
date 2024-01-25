@@ -124,7 +124,7 @@ function AjoutIndice({ indice, onAjouter }) {
               }
             : () => {
                 onAjouter(indice);
-                if (!JSON.parse(localStorage.getItem("muted"))) {
+                if (JSON.parse(localStorage.getItem("muted"))) {
                   playSound(issou);
                 }
               }

@@ -4,7 +4,7 @@ import "./Settings.scss";
 
 function Settings({ sousTitre, setSousTitre }) {
   const [active, setActive] = useState(false);
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
 
   // Chargement de l'état initial de sousTitre du localStorage
   useEffect(() => {
