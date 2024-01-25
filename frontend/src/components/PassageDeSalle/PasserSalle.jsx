@@ -75,7 +75,7 @@ function PasserSalle({ secretCode, setOpen, currentStage, dechiffrage }) {
       }
     } else if (localStorage.getItem("currentStage") === "/niveau3") {
       if (code.target.value.length === 10 || code.target.value.length === 11) {
-        if (code.target.value === secretCode) {
+        if (code.target.value.toUpperCase() === secretCode) {
           setUnlock(true);
         } else {
           setUnlock(false);
@@ -85,7 +85,7 @@ function PasserSalle({ secretCode, setOpen, currentStage, dechiffrage }) {
       if (code.target.value.length > 11) {
         setPassword(password);
       } else {
-        setPassword(code.target.value);
+        setPassword(code.target.value.toUpperCase());
       }
     } else if (localStorage.getItem("currentStage") === "/niveau4") {
       if (code.target.value.length === 18 || code.target.value.length === 19) {
