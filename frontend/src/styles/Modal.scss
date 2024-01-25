@@ -1,0 +1,15 @@
+.overlay {
+  display: flex;
+
+  .modal-content {
+    width: 990px;
+  }
+  .close-modal {
+    position: absolute;
+    top: 80px;
+    right: 170px;
+    width: 40px;
+    z-index: 1;
+    cursor: pointer;
+  }
+}

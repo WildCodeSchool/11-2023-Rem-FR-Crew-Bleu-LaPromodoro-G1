@@ -1,14 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./Settings.scss";
 
-function Settings() {
+function Settings({ sousTitre, setSousTitre }) {
   const [active, setActive] = useState(false);
-  const [subtitles, setSubtitles] = useState(true);
-  const [muted, setMuted] = useState(false);
-  const toggleActive = () => (active ? setActive(false) : setActive(true));
-  const toggleSubtitles = () =>
-    subtitles ? setSubtitles(false) : setSubtitles(true);
-  const toggleMuted = () => (muted ? setMuted(false) : setMuted(true));
+  const [muted, setMuted] = useState(JSON.parse(localStorage.getItem("muted")));
+
+  // Chargement de l'état initial de sousTitre du localStorage
+  useEffect(() => {
+    const savedSousTitre = localStorage.getItem("sousTitres");
+    if (savedSousTitre !== null) {
+      setSousTitre(JSON.parse(savedSousTitre));
+    }
+  }, [setSousTitre]);
+
+  const toggleActive = () => setActive(!active);
+  const toggleMuted = () => {
+    setMuted(!muted);
+    localStorage.setItem("muted", JSON.stringify(!muted));
+  };
+
+  const toggleSousTitre = () => {
+    const newSousTitreState = !sousTitre;
+    setSousTitre(newSousTitreState);
+    localStorage.setItem("sousTitres", JSON.stringify(newSousTitreState));
+  };
+
+  const volumeChange = (volume) => {
+    console.info(volume.target.value);
+  };
 
   return (
     <div id="parametres">
@@ -24,7 +44,14 @@ function Settings() {
             src="src/components/Settings/assets/High.png"
             alt="volume fort"
           />
-          <input type="range" name="volume" id="volume" />
+          <input
+            type="range"
+            name="volume"
+            id="volume"
+            min="1"
+            max="10"
+            onChange={volumeChange}
+          />
           <img
             src="src/components/Settings/assets/Low.png"
             alt="volume faible"
@@ -40,10 +67,10 @@ function Settings() {
             alt="couper le son"
           />
           <img
-            onClick={toggleSubtitles}
+            onClick={toggleSousTitre}
             id="subtitles"
             src={
-              !subtitles
+              sousTitre
                 ? "src/components/Settings/assets/sous-titres.png"
                 : "src/components/Settings/assets/sous-titres-off.png"
             }
@@ -54,4 +81,10 @@ function Settings() {
     </div>
   );
 }
+
+Settings.propTypes = {
+  sousTitre: PropTypes.bool.isRequired,
+  setSousTitre: PropTypes.func.isRequired,
+};
+
 export default Settings;

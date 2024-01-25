@@ -7,12 +7,14 @@
   position: absolute;
   top: 0;
   right: 0;
-
+  z-index: 0;
   background-color: #313131;
   border-radius: 5rem;
-
+  margin-top: 10px;
+  margin-right: 10px;
   width: calc(69px / 2);
   padding: 9px;
+  z-index: 0;
 
   img {
     width: 100%;

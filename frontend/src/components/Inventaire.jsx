@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import valiseFermerImage from "../assets/ValiseFermer.png";
 import valiseOuverteImage from "../assets/ValiseOuverte.png";
-import "../styles/Inventaire.css";
+import "../styles/Inventaire.scss";
+import Modal from "./Modal";
 
 function Inventaire({ items }) {
   const [visible, setVisible] = useState(false);
@@ -50,38 +52,33 @@ function Inventaire({ items }) {
           tabIndex={0}
           onKeyDown={(event) => handleKeyDown(event, () => {})}
         >
-          {items.map((item) => (
-            <button
-              type="button"
-              key={item.id}
-              onClick={() => handleItemClick(item)}
-              className="item-button"
-            >
-              <img
-                src={item.image}
-                alt={item.nom}
-                style={{ width: "50px", height: "auto" }}
-              />
-            </button>
-          ))}
+          {items.map((item) => {
+            if(item.id !== 0) {
+              return (
+                <button
+                  type="button"
+                  key={item.id}
+                  onClick={() => handleItemClick(item)}
+                  className="item-button"
+                >
+                  <img
+                    src={`http://localhost:5000${item.picture}`}
+                    alt={item.name}
+                    style={{ width: "50px", height: "auto" }}
+                  />
+                </button>
+              );
+            }
+            return undefined;
+          })}
         </div>
       )}
+
       {selectedItem && (
-        <div
-          className="overlay"
-          onClick={() => setSelectedItem(null)}
-          onKeyDown={(event) =>
-            handleKeyDown(event, () => setSelectedItem(null))
-          }
-          role="button"
-          tabIndex={0}
-        >
-          <img
-            src={selectedItem.image}
-            alt={selectedItem.nom}
-            className="selected-item"
-          />
-        </div>
+        <Modal
+          splineUrl={selectedItem.splineUrl}
+          onClose={() => setSelectedItem(null)}
+        />
       )}
     </div>
   );
@@ -92,7 +89,7 @@ Inventaire.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       image: PropTypes.string.isRequired,
-      nom: PropTypes.string.isRequired,
+      name: PropTypes.string,
     })
   ).isRequired,
 };
