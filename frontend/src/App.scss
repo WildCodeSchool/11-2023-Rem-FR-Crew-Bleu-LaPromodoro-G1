@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 :root {
   --bg-accueil: #908972;
 
@@ -11,22 +13,29 @@
   --font-color-text: #ffffff;
   --font-666-color: #e1525f;
 
-  --font-size-maintitle: 7rem;
+  --font-size-maintitle: 6.4rem;
   --font-size-title: 2rem;
   --font-size-text: 1rem;
   --background-text: #4b4b4b;
-
-  // $font-style-text: A définir;
-  // $font-style-subtitle: A définir;
-  // $font-style-title: A définir;
-  // $font-style-maintitle: CasinoShadow;
-
-  // $font-border-subtitle: A définir;
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--bg-accueil);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--background-text);
+  border-radius: 20px;
+  border: 3px solid var(--bg-accueil);
 }
 
 html {
