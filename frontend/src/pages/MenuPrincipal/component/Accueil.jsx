@@ -44,6 +44,7 @@ function Accueil() {
               type="button"
               onClick={() => {
                 localStorage.clear();
+                localStorage.setItem("muted", true);
                 localStorage.setItem(
                   "inventaire",
                   JSON.stringify([

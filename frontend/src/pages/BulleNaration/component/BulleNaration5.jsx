@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable dot-notation */
+/* eslint-disable prefer-template */
+/* eslint-disable no-restricted-syntax */
+import React, { useState, useEffect, useRef } from "react";
 import "./BulleNaration.scss";
 import "./BulleNaration5.scss";
 import closeIcon from "../assets/btn-text.png";
@@ -7,10 +10,48 @@ import "../../../App.scss";
 function BulleNaration() {
   const [modalNar, setModalNar] = useState(true);
   const [currentText, setCurrentText] = useState(1);
+  const [narration, setNarration] = useState([]);
+  const audioRef = useRef(null);
 
   const toggleModal = () => {
     setModalNar((prevModalNar) => !prevModalNar);
   };
+  const getData = () => {
+    fetch("http://localhost:5000/narration/")
+      .then((res) => res.json())
+      .then((data) => console.log(data) || setNarration(data));
+  };
+  const playSound = () => {
+    const urlSound = "sound" + currentText;
+    console.info(
+      "Tentative de lecture de l'audio",
+      // eslint-disable-next-line react/prop-types
+      narration[0]?.["sound1"],
+      `http://localhost:5000/${narration[4]?.[urlSound]}`
+    );
+    // eslint-disable-next-line react/prop-types
+    audioRef.current = new Audio(
+      `http://localhost:5000/${narration[4]?.[urlSound]}`
+    );
+
+    if (audioRef.current) {
+      if (JSON.parse(localStorage.getItem("muted"))) {
+        console.log("yolo");
+        audioRef.current
+          .play()
+          .then(() => {
+            console.warn("Audio en lecture");
+          })
+          .catch((e) => {
+            console.error("Erreur lors de la lecture de l'audio:", e);
+          });
+      }
+    }
+  };
+  useEffect(() => {
+    console.log("poulet");
+    getData();
+  }, []);
 
   useEffect(() => {
     const onAnimationEnd = () => {
@@ -43,33 +84,60 @@ function BulleNaration() {
                 onClick={toggleModal}
               />
               {currentText === 1 && (
-                <p className={`text${currentText}`}>
-                  "'Oooh la jolie salle !'"
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "'Oooh la jolie salle !'"
+                  </p>
+                </>
               )}
               {currentText === 2 && (
-                <p className={`text${currentText}`}>
-                  "'Non elle me fait peur :effrayé:'"
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "'Non elle me fait peur :effrayé:'"
+                  </p>
+                </>
               )}
               {currentText === 3 && (
-                <p className={`text${currentText}`}>"'J entends des voix"</p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "'J entends des voix"
+                  </p>
+                </>
               )}
               {currentText === 4 && (
-                <p className={`text${currentText}`}>"':pleure:'"</p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "':pleure:'"
+                  </p>
+                </>
               )}
               {currentText === 5 && (
-                <p className={`text${currentText}`}>"':rire:'"</p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "':rire:'"
+                  </p>
+                </>
               )}
               {currentText === 6 && (
-                <p className={`text${currentText}`}>
-                  "'A l aiiiiiiiiiide :cri:!'"
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "'A l aiiiiiiiiiide :cri:!'"
+                  </p>
+                </>
               )}
               {currentText === 7 && (
-                <p className={`text${currentText}`}>
-                  "'Libérez moi :supplice:'"
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    "'Libérez moi :supplice:'"
+                  </p>
+                </>
               )}
             </div>
           </div>

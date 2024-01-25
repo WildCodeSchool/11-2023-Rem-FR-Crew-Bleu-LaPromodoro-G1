@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable dot-notation */
+/* eslint-disable prefer-template */
+/* eslint-disable no-restricted-syntax */
+import React, { useState, useEffect, useRef } from "react";
 import "./BulleNaration.scss";
 import "./BulleNaration2.scss";
 import closeIcon from "../assets/btn-text.png";
@@ -6,12 +9,46 @@ import "../../../App.scss";
 
 function BulleNaration() {
   const [modalNar, setModalNar] = useState(true);
-  const [currentText, setCurrentText] = useState(1);
+  const [narration, setNarration] = useState([]);
 
+  const [currentText, setCurrentText] = useState(1);
+  const audioRef = useRef(null);
   const toggleModal = () => {
     setModalNar((prevModalNar) => !prevModalNar);
   };
 
+  const getData = () => {
+    fetch("http://localhost:5000/narration/")
+      .then((res) => res.json())
+      .then((data) => console.log(data) || setNarration(data));
+  };
+  const playSound = () => {
+    const urlSound = "sound" + currentText;
+    console.info(
+      "Tentative de lecture de l'audio",
+      // eslint-disable-next-line react/prop-types
+      narration[0]?.["sound1"],
+      `http://localhost:5000/${narration[1]?.[urlSound]}`
+    );
+    // eslint-disable-next-line react/prop-types
+    audioRef.current = new Audio(
+      `http://localhost:5000/${narration[1]?.[urlSound]}`
+    );
+
+    if (audioRef.current) {
+      if (JSON.parse(localStorage.getItem("muted"))) {
+        console.log("yolo");
+        audioRef.current
+          .play()
+          .then(() => {
+            console.warn("Audio en lecture");
+          })
+          .catch((e) => {
+            console.error("Erreur lors de la lecture de l'audio:", e);
+          });
+      }
+    }
+  };
   useEffect(() => {
     const onAnimationEnd = () => {
       setCurrentText((prevText) => prevText + 1);
@@ -29,6 +66,11 @@ function BulleNaration() {
     };
   }, [currentText]);
 
+  useEffect(() => {
+    console.log("poulet");
+    getData();
+  }, []);
+
   return (
     <div>
       {modalNar && (
@@ -43,27 +85,45 @@ function BulleNaration() {
                 onClick={toggleModal}
               />
               {currentText === 1 && (
-                <p className={`text${currentText}`}>
-                  “Encore une salle … :soupire:”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Encore une salle … :soupire:”
+                  </p>
+                </>
               )}
               {currentText === 2 && (
-                <p className={`text${currentText}`}>
-                  “Toutes ces roulettes me font tourner la tête !”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Toutes ces roulettes me font tourner la tête !”
+                  </p>
+                </>
               )}
               {currentText === 3 && (
-                <p className={`text${currentText}`}>
-                  “Ah, j'aperçois une autre porte, verrouillée celle-ci aussi…”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Ah, j'aperçois une autre porte, verrouillée celle-ci
+                    aussi…”
+                  </p>
+                </>
               )}
               {currentText === 4 && (
-                <p className={`text${currentText}`}>
-                  “Je vais devoir encore me débrouiller pour la dévérouiller.”
-                </p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Je vais devoir encore me débrouiller pour la dévérouiller.”
+                  </p>
+                </>
               )}
               {currentText === 5 && (
-                <p className={`text${currentText}`}>“Raaaah”</p>
+                <>
+                  {playSound()}
+                  <p ref={audioRef} className={`text${currentText}`}>
+                    “Raaaah”
+                  </p>
+                </>
               )}
             </div>
           </div>
