@@ -3,7 +3,7 @@ import Inventaire from "../../../components/Inventaire";
 import AjoutIndice from "../../Niveau1/components/AjoutIndice";
 import Settings from "../../../components/Settings/Settings";
 import "../styles/Niveau2.scss";
-import BulleNaration from "../../BulleNaration/component/BulleNaration";
+import BulleNaration2 from "../../BulleNaration/component/BulleNaration2";
 import HelpBtn from "../../../components/Help/HelpBtn";
 import SousTitres from "../../../components/SousTitres";
 
@@ -115,7 +115,7 @@ function Niveau2() {
 
   return (
     <div className="background-container2">
-      <BulleNaration />
+      <BulleNaration2 />
       {indicesAffiches.map((indice) => (
         <AjoutIndice
           key={indice.id}
