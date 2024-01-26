@@ -165,7 +165,7 @@ function Accueil() {
                   <img src={linkedin} alt="linkedin-logo" />
                 </a>
               </div>
-              <p>Maëva</p>
+              <p>Maë</p>
             </div>
             {/* BEGOT LINKS */}
             <div className="linksContainer">
