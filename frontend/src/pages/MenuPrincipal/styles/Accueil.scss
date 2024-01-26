@@ -18,11 +18,14 @@
 
     .seven {
       text-decoration: line-through;
+      font-family: "Rye", serif;
     }
 
     .seven-to-six {
       .to-six {
         display: none;
+        font-family: "Horror", serif;
+        font-size: 5rem;
       }
     }
 
@@ -95,9 +98,7 @@ section#home {
     text-align: justify;
     font-family: "PT Sans", sans-serif;
   }
-  span {
-    font-family: "Rye", serif;
-  }
+
   #launcher {
     display: flex;
     align-items: center;

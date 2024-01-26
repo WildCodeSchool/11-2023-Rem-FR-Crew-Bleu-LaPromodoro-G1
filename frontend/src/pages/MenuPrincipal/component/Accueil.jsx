@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/Accueil.scss";
+import github from "../assets/icons8-github-50.png";
+import linkedin from "../assets/icons8-linkedin-50.png";
 
 function Accueil() {
   return (
@@ -108,10 +110,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
-                    alt="github-logo"
-                  />
+                  <img src={github} alt="github-logo" />
                 </a>
                 {/* LINKEDIN */}
                 <a
@@ -119,10 +118,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
-                    alt="linkedin-logo"
-                  />
+                  <img src={linkedin} alt="linkedin-logo" />
                 </a>
               </div>
               <p>Mattéo</p>
@@ -136,10 +132,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
-                    alt="github-logo"
-                  />
+                  <img src={github} alt="github-logo" />
                 </a>
                 {/* LINKEDIN */}
                 <a
@@ -147,10 +140,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
-                    alt="linkedin-logo"
-                  />
+                  <img src={linkedin} alt="linkedin-logo" />
                 </a>
               </div>
               <p>Hamidou</p>
@@ -164,10 +154,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
-                    alt="github-logo"
-                  />
+                  <img src={github} alt="github-logo" />
                 </a>
                 {/* LINKEDIN */}
                 <a
@@ -175,10 +162,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
-                    alt="linkedin-logo"
-                  />
+                  <img src={linkedin} alt="linkedin-logo" />
                 </a>
               </div>
               <p>Maëva</p>
@@ -192,10 +176,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
-                    alt="github-logo"
-                  />
+                  <img src={github} alt="github-logo" />
                 </a>
                 {/* LINKEDIN */}
                 <a
@@ -203,10 +184,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
-                    alt="linkedin-logo"
-                  />
+                  <img src={linkedin} alt="linkedin-logo" />
                 </a>
               </div>
               <p>Gwena</p>
@@ -220,10 +198,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-github-50.png"
-                    alt="github-logo"
-                  />
+                  <img src={github} alt="github-logo" />
                 </a>
                 {/* LINKEDIN */}
                 <a
@@ -231,10 +206,7 @@ function Accueil() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src="src/pages/MenuPrincipal/assets/icons8-linkedin-50.png"
-                    alt="linkedin-logo"
-                  />
+                  <img src={linkedin} alt="linkedin-logo" />
                 </a>
               </div>
               <p>Océane</p>
